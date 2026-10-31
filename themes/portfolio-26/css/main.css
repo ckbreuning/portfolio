@@ -1,0 +1,261 @@
+/* VARIABLES */
+:root {
+    color-scheme: dark;
+
+    /* FARVER */
+    --bg: 12, 13, 15;
+    --panel: 21, 23, 26;
+    --panel2: 28, 31, 35;
+    --line: 42, 46, 51;
+
+    --ink: 236, 235, 231;
+    --soft: 198, 200, 203;
+    --muted: 154, 158, 164;
+    --dim: 108, 112, 119;
+
+    --paper: 238, 237, 233;
+    --p-ink: 18, 18, 18;
+    --p-muted: 85, 86, 90;
+    --p-line: 0, 0, 0;
+    /* REMEMBER: rgba(var(--p-line), .09) */
+
+    --brand: 26, 219, 158;
+    --brand-p: 10, 122, 87;
+    --ct: 126, 164, 255;
+    --red: 255, 75, 62;
+    --acc: var(--brand);
+    --acc-p: var(--brand-p);
+    --on-acc: 12, 13, 15;
+
+    /* FONTS */
+    --f-display: "Tektur", "Arial Black", system-ui, sans-serif;
+    --f-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+    /* GUTTERS */
+    --gut: clamp(16px, 4vw, 48px);
+}
+
+/* BODY */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: var(--f-body);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: inherit;
+    text-wrap: balance;
+}
+
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid rgb(var(--acc));
+    outline-offset: 3px;
+}
+
+/* LAYOUT + TEXT */
+.wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--gut);
+}
+
+.display {
+    font-family: var(--f-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: .92;
+    letter-spacing: -.01em;
+}
+
+.mono {
+    font-family: var(--f-mono);
+    font-size: 16px;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+}
+
+.muted {
+    color: rgb(var(--muted));
+}
+
+.soft {
+    color: rgb(var(--soft));
+}
+
+.acc {
+    color: rgb(var(--acc));
+}
+
+.lead {
+    font-size: clamp(18px, 1.4vw, 21px);
+    line-height: 1.6;
+    color: rgb(var(--soft));
+    max-width: 640px;
+}
+
+.header-xl {
+    font-size: clamp(52px, 7.4vw, 120px);
+}
+
+.header-large {
+    font-size: clamp(40px, 5vw, 80px)
+}
+
+.skip-link {
+    position: absolute;
+    left: var(--gut);
+    top: -100px;
+    z-index: 100;
+    padding: 10px 16px;
+    background-color: rgb(var(--acc));
+    color: rgb(var(--on-acc));
+    font: 700 16px var(--f-display);
+    text-transform: uppercase;
+}
+
+.skip-link:focus {
+    top: 10px
+}
+
+.page-pad {
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+
+.page-content {
+    margin-top: 24px;
+}
+
+/* HEADER */
+.top {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(var(--bg), .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgb(var(--line));
+}
+
+.top-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    min-height: 44px;
+    color: rgb(var(--ink));
+
+    svg {
+        display: block;
+        width: 104px;
+        height: 30px;
+    }
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        color: rgb(var(--soft));
+        font: 600 16px var(--f-display);
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        border-bottom: 2px solid transparent;
+        transition: color .2s, border-color .2s;
+    }
+
+    a:hover {
+        color: rgb(var(--ink));
+    }
+
+    a.current-menu-item {
+        color: rgb(var(--ink));
+        border-bottom-color: rgb(var(--acc));
+    }
+}
+
+.console {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (min-width: 768px) {
+    .top-row {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .top-row .console {
+        justify-self: end;
+    }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
