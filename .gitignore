@@ -1,0 +1,14 @@
+/*
+
+!.gitignore
+!README.md
+!mu-plugins/
+
+!themes/
+themes/*
+!themes/your-theme-name/
+
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
