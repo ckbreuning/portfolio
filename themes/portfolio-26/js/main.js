@@ -64,7 +64,7 @@ if (hasMouse) {
         showLockBrackets(currentTarget)
     }
 
-    window.addEventListener("scroll", updateActiveTarget, { passive: true })
+    window.addEventListener("scroll", updateActiveTarget)
     window.addEventListener("resize", updateActiveTarget)
 
     // CARDS
@@ -128,4 +128,41 @@ if (feed) {
     }, { threshold: 0.5 })
 
     feedObserver.observe(feed)
+}
+
+// CASE STUDY: CHAPTER NAV
+const chapterLinks = document.querySelectorAll(".chapter-list a")
+const caseSections = document.querySelectorAll(".case-section")
+
+function highlightChapter() {
+    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4
+    let current = null
+
+    caseSections.forEach((section) => {
+        if (section.getBoundingClientRect().top < window.innerHeight * 0.4) {
+            current = section
+        }
+    })
+
+    if (atBottom) {
+        current = caseSections[caseSections.length - 1]
+    }
+
+    let beforeCurrent = current !== null
+
+    chapterLinks.forEach((link) => {
+        const isCurrent = current !== null && link.getAttribute("href") === `#${current.id}`
+
+        if (isCurrent) {
+            beforeCurrent = false
+        }
+
+        link.classList.toggle("is-current", isCurrent)
+        link.classList.toggle("is-past", beforeCurrent)
+    })
+}
+
+if (caseSections.length) {
+    highlightChapter()
+    window.addEventListener("scroll", highlightChapter)
 }

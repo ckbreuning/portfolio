@@ -1,8 +1,8 @@
 <?php
 function portfolio_post_types() {
     register_post_type("project", array(
-        "show_in_rest" => true,
-        "supports" => array("title", "editor", "excerpt", "thumbnail"),
+        "show_in_rest" => false,
+        "supports" => array("title", "excerpt", "thumbnail"),
         "rewrite" => array("slug" => "work"),
         "has_archive" => true,
         "public" => true,

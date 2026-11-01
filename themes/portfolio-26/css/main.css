@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* VARIABLES */
 :root {
     color-scheme: dark;
@@ -276,7 +280,7 @@ textarea:focus-visible {
     }
 
     .top-row .console {
-        justify-self: end;
+        justify-self: flex-end;
     }
 }
 
@@ -444,7 +448,7 @@ textarea:focus-visible {
 /* RADAR */
 .poster-radar {
     grid-area: radar;
-    align-self: end;
+    align-self: flex-end;
 }
 
 .radar {
@@ -506,8 +510,8 @@ textarea:focus-visible {
 /* AVAILABILITY + SEE MY WORK */
 .poster-meta {
     grid-area: meta;
-    align-self: end;
-    justify-self: end;
+    align-self: flex-end;
+    justify-self: flex-end;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -863,6 +867,271 @@ textarea:focus-visible {
 
     .work {
         padding-top: 88px;
+    }
+}
+
+/* CASE STUDY */
+.btn-outline:hover {
+    background-color: rgb(var(--ink));
+    color: rgb(var(--bg));
+}
+
+.chapters {
+    position: sticky;
+    top: var(--header-height, 64px);
+    z-index: 30;
+    background-color: rgba(var(--bg), .94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgb(var(--line));
+}
+
+.chapters .wrap {
+    position: relative;
+}
+
+.chapters .wrap::after {
+    content: "";
+    position: absolute;
+    left: var(--gut);
+    right: var(--gut);
+    bottom: -1px;
+    height: 3px;
+    background-color: rgb(var(--acc));
+    transform-origin: left;
+    animation: read-progress linear both;
+    animation-timeline: scroll();
+}
+
+@keyframes read-progress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.chapter-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(120px, 1fr);
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    a {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 12px 10px 14px;
+        color: rgb(var(--dim));
+        transition: color .2s, background-color .2s;
+    }
+
+    a:hover {
+        color: rgb(var(--ink));
+    }
+
+    a.is-past {
+        color: rgb(var(--muted));
+    }
+
+    a.is-current {
+        color: rgb(var(--ink));
+        background-color: rgb(var(--panel));
+    }
+
+    a.is-current .chapter-number {
+        color: rgb(var(--acc));
+    }
+}
+
+.chapter-number {
+    font: 500 16px var(--f-mono);
+}
+
+.chapter-name {
+    font: 700 16px var(--f-display);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* CASE STUDY HEADER */
+.case-head.case-section {
+    padding-top: 44px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    color: rgb(var(--muted));
+    transition: color .2s;
+}
+
+.back-link:hover {
+    color: rgb(var(--ink));
+}
+
+.case-intro {
+    margin-top: 20px;
+    align-items: flex-end;
+}
+
+.case-title {
+    margin-top: 18px;
+    font-size: clamp(52px, 7vw, 116px);
+}
+
+.case-hero {
+    margin-top: 36px;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+    background-color: rgb(var(--panel2));
+    border: 1px solid rgb(var(--line));
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* CASE STUDY SECTIONS */
+.case {
+    max-width: 1100px;
+    padding-bottom: 128px;
+}
+
+.case-section {
+    padding-top: 128px;
+    scroll-margin-top: calc(var(--header-height, 64px) + 24px);
+}
+
+.case-heading {
+    margin-top: 16px;
+}
+
+.case-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 720px;
+    margin-top: 18px;
+    font-size: clamp(18px, 1.4vw, 21px);
+    color: rgb(var(--soft));
+
+    ul,
+    ol {
+        padding-left: 20px;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    li+li {
+        margin-top: 6px;
+    }
+
+    strong {
+        font-weight: 600;
+        color: rgb(var(--ink));
+    }
+
+    a {
+        color: rgb(var(--ink));
+        text-decoration: underline;
+        text-decoration-color: rgb(var(--acc));
+        text-underline-offset: 4px;
+    }
+}
+
+/* OVERVIEW FACTS */
+.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin: 24px 0 0;
+
+    dt {
+        color: rgb(var(--muted));
+    }
+
+    dd {
+        margin: 8px 0 0;
+    }
+}
+
+.case-live {
+    margin-top: 28px;
+}
+
+/* CASE STUDY IMAGES */
+.case-figure {
+    margin: 32px 0 0;
+
+    img {
+        width: 100%;
+        border: 1px solid rgb(var(--line));
+    }
+
+    figcaption {
+        margin-top: 10px;
+        color: rgb(var(--muted));
+    }
+}
+
+/* CASE STUDY CODE SNIPPET */
+.case-code {
+    margin: 32px 0 0;
+
+    figcaption {
+        padding: 10px 16px;
+        border: 1px solid rgb(var(--line));
+        border-bottom: none;
+        color: rgb(var(--muted));
+        text-transform: none;
+        /* keep file names like main.js lowercase */
+    }
+
+    pre {
+        margin: 0;
+        padding: 20px;
+        overflow-x: auto;
+        /* long lines scroll instead of breaking the layout */
+        background-color: rgb(var(--panel));
+        border: 1px solid rgb(var(--line));
+        font: 15px/1.6 var(--f-mono);
+        color: rgb(var(--soft));
+        tab-size: 4;
+    }
+}
+
+/* END BUTTONS */
+.case-end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 96px;
+}
+
+@media (max-width: 767px) {
+    .case-section {
+        padding-top: 88px;
+    }
+
+    .case-hero {
+        aspect-ratio: 16 / 10;
     }
 }
 
