@@ -554,7 +554,7 @@ textarea:focus-visible {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .poster-grid {
         row-gap: 18px;
     }
@@ -562,6 +562,132 @@ textarea:focus-visible {
     .poster-photo {
         min-height: 280px;
     }
+}
+
+/* CROSSHAIR & CORNERS */
+.has-crosshair a,
+.has-crosshair button,
+.has-crosshair .poster {
+    cursor: none;
+}
+
+.crosshair {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 95;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .12s;
+    color: rgb(var(--acc));
+
+    span {
+        position: absolute;
+        background-color: currentColor;
+        box-shadow: 0 0 0 1px rgba(var(--p-line), .35);
+    }
+}
+
+.line-top {
+    left: -1px;
+    top: -16px;
+    width: 2px;
+    height: 10px;
+}
+
+.line-bottom {
+    left: -1px;
+    top: 6px;
+    width: 2px;
+    height: 10px;
+}
+
+.line-left {
+    top: -1px;
+    left: -16px;
+    width: 10px;
+    height: 2px;
+}
+
+.line-right {
+    top: -1px;
+    left: 6px;
+    width: 10px;
+    height: 2px;
+}
+
+.dot {
+    left: -1px;
+    top: -1px;
+    width: 2px;
+    height: 2px;
+}
+
+.lock {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 94;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s, transform .16s, width .16s, height .16s;
+    color: rgb(var(--acc));
+
+    span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border: 0 solid currentColor;
+    }
+}
+
+.lock .corner-tl {
+    left: 0;
+    top: 0;
+    border-left-width: 2px;
+    border-top-width: 2px;
+}
+
+.lock .corner-tr {
+    right: 0;
+    top: 0;
+    border-right-width: 2px;
+    border-top-width: 2px;
+}
+
+.lock .corner-bl {
+    left: 0;
+    bottom: 0;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.lock .corner-br {
+    right: 0;
+    bottom: 0;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.crosshair.is-visible,
+.lock.is-visible {
+    opacity: 1;
+}
+
+
+.crosshair.on-paper,
+.lock.on-paper {
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
+}
+
+.crosshair.on-paper span {
+    box-shadow: none;
+}
+
+/* POSTER MOTION */
+.poster [data-depth] {
+    transition: transform .5s ease-out;
 }
 
 /* REDUCED MOTION */

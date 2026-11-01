@@ -4,8 +4,8 @@
   <?php while (have_posts()) {
     the_post(); ?>
   <section class="poster" aria-label="Introduction">
-    <span class="plus plus-1" aria-hidden="true"></span>
-    <span class="plus plus-2" aria-hidden="true"></span>
+    <span class="plus plus-1" data-depth="-1.2" aria-hidden="true"></span>
+    <span class="plus plus-2" data-depth="1.6" aria-hidden="true"></span>
 
     <div class="wrap poster-grid">
       <div class="poster-top">
@@ -21,12 +21,12 @@
        <span>Christian</span>
        <span>Breuning</span>
       </h1>
-      <p class="note note-1"><span class="note-label mono">Role 01:</span><b>Frontend development</b></p>
-      <p class="note note-2"><span class="note-label mono">Role 02:</span><b>UX/UI design</b></p>
-      <p class="note note-3"><span class="note-label mono">Role 03:</span><b>Visual design</b></p>
-      <p class="note note-4"><span class="note-label mono">Based in:</span><b>Aalborg, Denmark</b></p>
+      <p class="note note-1" data-depth="-0.6"><span class="note-label mono">Role 01:</span><b>Frontend development</b></p>
+      <p class="note note-2" data-depth="-0.9"><span class="note-label mono">Role 02:</span><b>UX/UI design</b></p>
+      <p class="note note-3" data-depth="0.6"><span class="note-label mono">Role 03:</span><b>Visual design</b></p>
+      <p class="note note-4" data-depth="0.9"><span class="note-label mono">Based in:</span><b>Aalborg, Denmark</b></p>
 
-      <div class="poster-photo">
+      <div class="poster-photo" data-depth="0.35">
         <?php the_post_thumbnail('large'); ?>
       </div>
 
