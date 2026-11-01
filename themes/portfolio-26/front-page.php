@@ -13,7 +13,7 @@
           <?php get_template_part("template-parts/logo"); ?>
           <span>Portfolio - Aalborg, Denmark</span>
         </div>
-        <a href="https://github.com/ckbreuning" class="qr-link" aria-label="My GitHub profile">
+        <a href="https://github.com/ckbreuning" class="qr-link" aria-label="My GitHub profile" target="_blank">
           <?php get_template_part("template-parts/qr-github"); ?>
         </a>
       </div>
@@ -52,6 +52,28 @@
       <div class="poster-meta">
         <span class="status mono"><span class="status-dot"></span>Open for internship &amp; freelance</span>
         <a href="<?php echo site_url('/work'); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <ul class="feed">
+      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-code" aria-hidden="true"></i><span>Frontend Development</span></li>
+      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>UX/UI Design</span></li>
+      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-swatchbook" aria-hidden="true"></i><span>Visual Design</span></li>
+    </ul>
+
+    <div class="wrap intro-content">
+      <div class="split">
+        <div>
+          <p class="tag mono"><b>01</b><span>About me</span></p>
+          <h2 class="display header-large intro-heading" id="intro-heading">I design and build<br><span class="acc">digital solutions.</span></h2>
+        </div>
+        <div class="intro-text">
+          <p class="lead">I'm a multimedia designer who builds things that work both technically and visually. I'm analytical and structured, but I never forget that it has to feel right for the person using it.</p>
+          <p class="lead">I study multimedia design at UCN in Aalborg and work across frontend development, UX/UI and visual design.</p>
+          <p class="lead">Curious? <a class="text-link" href="<?php echo site_url('/work'); ?>">See my projects</a> or <a class="text-link" href="<?php echo site_url('/contact'); ?>">get in touch</a>.</p>
+        </div>
       </div>
     </div>
   </section>
