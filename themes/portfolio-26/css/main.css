@@ -27,6 +27,8 @@
     --acc-p: var(--brand-p);
     --on-acc: 12, 13, 15;
 
+    --black: 0, 0, 0;
+
     /* FONTS */
     --f-display: "Tektur", "Arial Black", system-ui, sans-serif;
     --f-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -176,7 +178,7 @@ textarea:focus-visible {
 }
 
 .skip-link {
-    position: absolute;
+    position: fixed;
     left: var(--gut);
     top: -100px;
     z-index: 100;
@@ -629,7 +631,7 @@ textarea:focus-visible {
 
 /* INTRO SECTION */
 .intro {
-    background-color: rgb(0 0 0);
+    background-color: rgb(var(--black));
     padding: 96px 0;
 }
 
@@ -700,6 +702,175 @@ textarea:focus-visible {
 }
 
 
+/* SELECTED WORK */
+.btn-solid {
+    background-color: rgb(var(--acc));
+    border-color: rgb(var(--acc));
+    color: rgb(var(--on-acc));
+}
+
+.work {
+    padding-top: 128px;
+}
+
+.work-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.work-heading {
+    margin-top: 18px;
+}
+
+.work-intro {
+    max-width: 380px;
+    color: rgb(var(--muted))
+}
+
+.pool {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+/* CARD */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(var(--panel));
+    border: 1px solid rgb(var(--line));
+    transition: border-color .2s, transform .3s;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+    border-color: rgb(var(--acc));
+    transform: translateY(-4px);
+}
+
+.project-image {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: rgb(var(--panel2));
+
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.1);
+        transition: filter .4s;
+    }
+}
+
+.project-card:hover .project-image img,
+.project-card:focus-visible .project-image img {
+    filter: grayscale(0) contrast(1)
+}
+
+.project-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(var(--black), .8) 0%, rgba(var(--black), .4) 25%, transparent 50%);
+    pointer-events: none;
+}
+
+/* VERTICAL CODE */
+.project-code {
+    position: absolute;
+    left: 14px;
+    top: 12px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font: 900 clamp(20px, 1.8vw, 28px) var(--f-display);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    color: rgb(var(--paper));
+    text-shadow: 0 2px 0 rgba(var(--black), .4);
+    z-index: 1;
+}
+
+/* STAMP */
+.project-stamp {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    padding: 4px 10px;
+    border: 2px solid currentColor;
+    font: 900 16px var(--f-display);
+    text-transform: uppercase;
+    color: rgb(var(--paper));
+    transform: rotate(6deg);
+    opacity: 0;
+    transition: opacity .2s;
+    z-index: 1;
+    background-color: rgba(var(--black), .6);
+}
+
+.project-card:hover .project-stamp,
+.project-card:focus-visible .project-stamp {
+    opacity: 1;
+}
+
+/* TEXT */
+.project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding: 20px;
+}
+
+.project-meta,
+.project-tags {
+    color: rgb(var(--muted));
+}
+
+.is-shipped {
+    color: rgb(var(--acc));
+}
+
+.project-title {
+    font-size: clamp(26px, 2.2vw, 34px);
+}
+
+.project-desc {
+    color: rgb(var(--soft));
+}
+
+.project-body .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.project-card:hover .btn-solid {
+    background-color: rgb(var(--ink));
+    border-color: rgb(var(--ink));
+}
+
+@media (max-width: 900px) {
+    .pool {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .pool {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .work {
+        padding-top: 88px;
+    }
+}
+
 /* CROSSHAIR & CORNERS */
 .has-crosshair a,
 .has-crosshair button,
@@ -720,7 +891,7 @@ textarea:focus-visible {
     span {
         position: absolute;
         background-color: currentColor;
-        box-shadow: 0 0 0 1px rgba(var(--p-line), .35);
+        box-shadow: 0 0 0 1px rgba(var(--black), .35);
     }
 }
 

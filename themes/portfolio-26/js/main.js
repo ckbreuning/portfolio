@@ -67,6 +67,14 @@ if (hasMouse) {
     window.addEventListener("scroll", updateActiveTarget, { passive: true })
     window.addEventListener("resize", updateActiveTarget)
 
+    // CARDS
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event
+    document.addEventListener("transitionend", (e) => {
+        if (e.target === currentTarget) {
+            showLockBrackets(currentTarget)
+        }
+    })
+
     if (poster) {
         poster.addEventListener("mouseenter", () => {
             crosshair.classList.add("on-paper")
@@ -78,6 +86,7 @@ if (hasMouse) {
             lock.classList.remove("on-paper")
         })
     }
+
 }
 
 // POSTER MOTION

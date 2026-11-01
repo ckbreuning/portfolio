@@ -16,7 +16,7 @@
         </a>
 
         <nav class="nav">
-            <a href="<?php echo site_url('/work'); ?>" <?php if (is_page('work') or is_singular('project')) echo 'class="current-menu-item"'; ?>>Work</a>
+            <a href="<?php echo get_post_type_archive_link('project'); ?>" <?php if (is_post_type_archive('project') or is_singular('project')) echo 'class="current-menu-item"'; ?>>Work</a>
             <a href="<?php echo site_url('/about'); ?>" <?php if (is_page('about')) echo 'class="current-menu-item"'; ?>>About</a>
             <a href="<?php echo site_url('/contact'); ?>" <?php if (is_page('contact')) echo 'class="current-menu-item"'; ?>>Contact</a>
         </nav>
