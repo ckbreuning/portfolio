@@ -87,7 +87,6 @@
       <p class="tag mono"><b>02</b><span>Case studies</span></p>
       <h2 class="display header-xl work-heading" id="work-heading">Selected work</h2>
     </div>
-    <p class="work-intro">Three projects, from research and design to the finished build.</p>
   </div>
 
   <div class="pool">

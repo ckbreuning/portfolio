@@ -725,11 +725,6 @@ textarea:focus-visible {
     margin-top: 18px;
 }
 
-.work-intro {
-    max-width: 380px;
-    color: rgb(var(--muted))
-}
-
 .pool {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
