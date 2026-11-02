@@ -108,6 +108,7 @@
   </div>
 </section>
 
+<!-- HOW I WORK -->
 <section class="wrap process" id="process" aria-labelledby="process-heading">
 
   <div class="process-head">
@@ -157,6 +158,107 @@
         <p class="timeline-text">Tests with real users, then back to the design with what they showed me.</p>
       </li>
     </ol>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="wrap skills" id="skills" aria-labelledby="skills-heading">
+  <p class="tag mono"><b>04</b><span>Skills</span></p>
+  <h2 class="display header-xl skills-heading" id="skills-heading">What I work with</h2>
+
+  <div class="skill">
+    <div class="skill-tabs">
+      <button type="button" class="skill-tab is-active" aria-pressed="true"><span class="skill-key mono">1</span>Code</button>
+      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">2</span>UX &amp; research</button>
+      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">3</span>UI &amp; visual</button>
+      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">4</span>Tools &amp; process</button>
+    </div>
+
+    <div class="skill-panels" aria-live="polite">
+
+      <!-- 1. FRONTEND -->
+      <div class="skill-panel">
+        <ul class="slots">
+          <li class="slot"><span class="slot-name">HTML &amp; CSS</span><p class="slot-text">Semantic, accessible markup and responsive layouts.</p></li>
+          <li class="slot"><span class="slot-name">JavaScript</span><p class="slot-text">Interactions I write and understand myself.</p></li>
+          <li class="slot"><span class="slot-name">PHP &amp; WordPress</span><p class="slot-text">Custom themes and post types, no page builders.</p></li>
+        </ul>
+        <div class="also">
+          <p class="also-label mono">Also</p>
+          <ul class="also-list">
+            <li>Responsive design</li>
+            <li>Vue</li>
+            <li>WordPress REST API</li>
+            <li>Headless CMS</li>
+            <li>SQL databases</li>
+            <li>SEO</li>
+            <li>Deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2. UX & RESEARCH -->
+      <div class="skill-panel" hidden>
+        <ul class="slots">
+          <li class="slot"><span class="slot-name">User research</span><p class="slot-text">Finding out what people need before anything is designed.</p></li>
+          <li class="slot"><span class="slot-name">Think-aloud tests</span><p class="slot-text">Watching real users, then fixing what they struggle with.</p></li>
+          <li class="slot"><span class="slot-name">Information architecture</span><p class="slot-text">Structure and navigation that help people find things.</p></li>
+        </ul>
+        <div class="also">
+          <p class="also-label mono">Also</p>
+          <ul class="also-list">
+            <li>Interviews</li>
+            <li>Personas</li>
+            <li>Affinity diagrams</li>
+            <li>Card sorting</li>
+            <li>Usability tests (tree, 5-second)</li>
+            <li>Content sitemaps</li>
+            <li>Metadata</li>
+            <li>UX writing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. UI & VISUAL -->
+      <div class="skill-panel" hidden>
+        <ul class="slots">
+          <li class="slot"><span class="slot-name">Interface design</span><p class="slot-text">Clear layouts built on hierarchy and contrast.</p></li>
+          <li class="slot"><span class="slot-name">Prototyping</span><p class="slot-text">Clickable flows in Figma, to test ideas early.</p></li>
+          <li class="slot"><span class="slot-name">Typography</span><p class="slot-text">Type that does the work before decoration does.</p></li>
+        </ul>
+        <div class="also">
+          <p class="also-label mono">Also</p>
+          <ul class="also-list">
+            <li>Wireframes</li>
+            <li>Atomic Design</li>
+            <li>Visual hierarchy</li>
+            <li>Colours &amp; contrast</li>
+            <li>Branding &amp; visual identity</li>
+            <li>Data visualisation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. TOOLS & PROCESS -->
+      <div class="skill-panel" hidden>
+        <ul class="slots">
+          <li class="slot"><span class="slot-name">Figma</span><p class="slot-text">Wireframes, prototypes and design systems.</p></li>
+          <li class="slot"><span class="slot-name">Git &amp; GitHub</span><p class="slot-text">Branches, merges and conflicts, in teams and solo.</p></li>
+          <li class="slot"><span class="slot-name">Project leading</span><p class="slot-text">Planning the work and keeping a team on track.</p></li>
+        </ul>
+        <div class="also">
+          <p class="also-label mono">Also</p>
+          <ul class="also-list">
+            <li>Affinity</li>
+            <li>Photoshop</li>
+            <li>VS Code</li>
+            <li>Design sprints</li>
+            <li>Requirement specifications</li>
+            <li>Digital Services Act (DSA)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <?php } ?>

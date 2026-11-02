@@ -164,3 +164,19 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 })
 
 revealElements.forEach((element) => revealObserver.observe(element))
+
+// SKILLS: TABS
+const skillTabs = document.querySelectorAll(".skill-tab")
+const skillPanels = document.querySelectorAll(".skill-panel")
+
+skillTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+        skillTabs.forEach((otherTab, i) => {
+            otherTab.classList.toggle("is-active", i === index)
+        })
+
+        skillPanels.forEach((panel, i) => {
+            panel.hidden = i !== index
+        })
+    })
+})
