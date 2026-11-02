@@ -97,7 +97,7 @@
       "post_type" => "project",
       "meta_key" => "project_number",
       "orderby" => "meta_value",
-      "order" => "ASC"
+      "order" => "DESC"
     ));
 
     while ($homepageProjects->have_posts()) {
@@ -292,6 +292,25 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap contact" id="contact" aria-labelledby="contact-heading">
+  <div class="accept">
+    <p class="mono accept-label">Next challenge</p>
+    <h2 class="display accept-heading" id="contact-heading">Let's work together</h2>
+    <p class="accept-text">Internship, freelance or a question about a project. Send me a message, and I'll get back to you.</p>
+
+    <div class="accept-bar" aria-hidden="true"><span></span></div>
+
+    <a class="btn accept-btn" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="accept-email mono" href="mailto:ckbreuning@gmail.com">ckbreuning@gmail.com</a>
+
+    <div class="accept-links">
+      <a class="btn btn-outline" href="https://linkedin.com/in/christian-breuning" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
+      <a class="btn btn-outline" href="https://github.com/ckbreuning" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
+    </div>
   </div>
 </section>
 <?php } ?>
