@@ -114,6 +114,19 @@ if (poster && !reduceMotion && hasMouse) {
     })
 }
 
+// SCROLL HINT
+const scrollHint = document.querySelector(".scroll-hint")
+
+if (scrollHint) {
+    const hintObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            scrollHint.classList.toggle("is-visible", entry.intersectionRatio >= 0.95)
+        })
+    }, { threshold: 0.95 })
+
+    hintObserver.observe(poster)
+}
+
 // CASE STUDY: CHAPTER NAV
 const chapterLinks = document.querySelectorAll(".chapter-list a")
 const caseSections = document.querySelectorAll(".case-section")

@@ -57,9 +57,16 @@
         <a href="<?php echo get_post_type_archive_link('project'); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
       </div>
     </div>
+
+    <a class="scroll-hint" href="#intro" aria-label="Scroll to the introduction">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
   </section>
+
 <!-- INTRO -->
-  <section class="intro" aria-labelledby="intro-heading">
+  <section class="intro" id="intro" aria-labelledby="intro-heading">
     <ul class="feed">
       <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-code" aria-hidden="true"></i><span>Frontend Development</span></li>
       <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>UX/UI Design</span></li>
