@@ -114,22 +114,6 @@ if (poster && !reduceMotion && hasMouse) {
     })
 }
 
-// INTRO KILLFEED
-const feed = document.querySelector(".feed")
-
-if (feed) {
-    const feedObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.intersectionRatio >= 0.5) {
-                entry.target.classList.add("is-visible")
-                feedObserver.unobserve(entry.target)
-            }
-        })
-    }, { threshold: 0.5 })
-
-    feedObserver.observe(feed)
-}
-
 // CASE STUDY: CHAPTER NAV
 const chapterLinks = document.querySelectorAll(".chapter-list a")
 const caseSections = document.querySelectorAll(".case-section")
@@ -166,3 +150,17 @@ if (caseSections.length) {
     highlightChapter()
     window.addEventListener("scroll", highlightChapter)
 }
+
+// REVEAL ON SCROLL
+const revealElements = document.querySelectorAll(".feed, .timeline")
+
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.intersectionRatio >= 0.3) {
+            entry.target.classList.add("is-visible")
+            revealObserver.unobserve(entry.target)
+        }
+    })
+}, { threshold: 0.3 })
+
+revealElements.forEach((element) => revealObserver.observe(element))

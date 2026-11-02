@@ -107,6 +107,58 @@
     ?>
   </div>
 </section>
+
+<section class="wrap process" id="process" aria-labelledby="process-heading">
+
+  <div class="process-head">
+    <div>
+      <p class="tag mono"><b>03</b><span>My process</span></p>
+      <h2 class="display header-xl process-heading" id="process-heading">How I work</h2>
+    </div>
+    <p class="lead">I work through five steps on every project, but not in a straight line. What I learn from testing usually sends me back to improve the design.</p>
+  </div>
+
+  <div class="timeline">
+
+    <svg class="timeline-loop" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M808 100 C 720 0, 500 0, 408 100"/>
+    </svg>
+    <span class="timeline-loop-label mono" aria-hidden="true">Back to design</span>
+
+    <ol class="timeline-steps">
+      <li class="timeline-step">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <p class="timeline-number mono">01</p>
+        <h3 class="display timeline-name">Research</h3>
+        <p class="timeline-text">Interviews, client meetings and affinity diagrams. Nothing gets designed before I know what people actually need.</p>
+      </li>
+      <li class="timeline-step">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <p class="timeline-number mono">02</p>
+        <h3 class="display timeline-name">Define</h3>
+        <p class="timeline-text">One clear goal, a content sitemap and priorities, so the time goes to the things that matter most.</p>
+      </li>
+      <li class="timeline-step">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <p class="timeline-number mono">03</p>
+        <h3 class="display timeline-name">Design</h3>
+        <p class="timeline-text">Sketches, then wireframes in Figma, then a visual system with colours checked for contrast.</p>
+      </li>
+      <li class="timeline-step">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <p class="timeline-number mono">04</p>
+        <h3 class="display timeline-name">Build</h3>
+        <p class="timeline-text">Semantic HTML, CSS and my own JavaScript, versioned in Git and measured in Lighthouse.</p>
+      </li>
+      <li class="timeline-step">
+        <span class="timeline-node" aria-hidden="true"></span>
+        <p class="timeline-number mono">05</p>
+        <h3 class="display timeline-name">Test &amp; iterate</h3>
+        <p class="timeline-text">Tests with real users, then back to the design with what they showed me.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 <?php } ?>
 </main>
 
