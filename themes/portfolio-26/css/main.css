@@ -159,6 +159,11 @@ textarea:focus-visible {
     line-height: 1.6;
     color: rgb(var(--soft));
     max-width: 640px;
+
+    strong {
+        font-weight: 600;
+        color: rgb(var(--ink));
+    }
 }
 
 .text-link {
@@ -391,6 +396,19 @@ textarea:focus-visible {
     span {
         display: block;
     }
+
+    .poster-role {
+        display: block;
+        width: fit-content;
+        margin: 18px auto 0;
+        padding: 8px 14px;
+        background-color: rgb(var(--p-ink));
+        color: rgb(var(--paper));
+        font-size: clamp(16px, 1.6vw, 22px);
+        font-weight: 500;
+        letter-spacing: .2em;
+        line-height: 1.2;
+    }
 }
 
 /* NOTES */
@@ -440,7 +458,7 @@ textarea:focus-visible {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 35% 25%;
+        object-position: 0% 10%;
         filter: grayscale(1) contrast(1.25)
     }
 }
@@ -1460,28 +1478,133 @@ textarea:focus-visible {
     }
 }
 
-/* FOOTER */
-.site-footer {
+/* ABOUT TEASER */
+.about-teaser {
+    padding-top: 128px;
+
+    .split {
+        align-items: stretch;
+    }
+}
+
+.about-teaser-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.about-teaser-buttons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 12px 24px;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+    .about-teaser-text {
+        order: -1;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-teaser {
+        padding-top: 88px;
+    }
+}
+
+/* MILESTONES */
+.milestones-label {
+    color: rgb(var(--dim));
+}
+
+.milestones {
+    margin-top: 12px;
+    border-top: 1px solid rgb(var(--line));
+
+    li {
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 16px;
+        padding: 14px 12px;
+        border-bottom: 1px solid rgb(var(--line));
+    }
+}
+
+.milestone-year {
+    color: rgb(var(--acc));
+}
+
+.milestones .is-upcoming {
+    color: rgb(var(--muted));
+    border-bottom-style: dashed;
+
+    .milestone-year {
+        color: rgb(var(--dim));
+    }
+}
+
+.milestones .is-current {
+    background-color: rgb(var(--panel));
+    box-shadow: inset 2px 0 0 rgb(var(--acc));
+    color: rgb(var(--ink));
+    font-weight: 600;
+}
+
+.milestone-now {
+    margin-left: 8px;
+    padding: 2px 7px;
+    background-color: rgb(var(--acc));
+    color: rgb(var(--on-acc));
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.milestones .is-goal {
+    margin-top: 12px;
+    border: 1px dashed rgb(var(--acc));
+    color: rgb(var(--ink));
+
+    .milestone-year {
+        color: rgb(var(--acc));
+    }
+
+    i {
+        margin-left: 8px;
+        color: rgb(var(--acc));
+    }
+}
+
+.about-teaser-milestones {
+    display: flex;
+    flex-direction: column;
+}
+
+.milestones-cv {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0;
+}
+
+/* FOOTER */
+.site-footer {
     margin-top: 128px;
-    padding-top: 28px;
+    padding-top: 40px;
     padding-bottom: 40px;
     border-top: 1px solid rgb(var(--line));
     color: rgb(var(--dim));
 }
 
-.footer-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: color .2s;
+.footer-slogan {
+    font-size: clamp(28px, 3.2vw, 44px);
+    color: rgb(var(--ink));
 }
 
-.footer-link:hover {
-    color: rgb(var(--ink));
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 32px;
 }
 
 /* CROSSHAIR & CORNERS */

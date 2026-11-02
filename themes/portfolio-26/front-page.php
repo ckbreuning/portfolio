@@ -20,8 +20,9 @@
         </a>
       </div>
       <h1 class="display poster-title">
-       <span>Christian</span>
-       <span>Breuning</span>
+        <span>Christian</span>
+        <span>Breuning</span>
+        <span class="poster-role mono">Multimedia designer</span>
       </h1>
       <p class="note note-1" data-depth="-0.6"><span class="note-label mono">Role 01:</span><b>Frontend development</b></p>
       <p class="note note-2" data-depth="-0.9"><span class="note-label mono">Role 02:</span><b>UX/UI design</b></p>
@@ -72,8 +73,8 @@
           <h2 class="display header-large intro-heading" id="intro-heading">I design and build<br><span class="acc">digital solutions.</span></h2>
         </div>
         <div class="intro-text">
-          <p class="lead">I'm a multimedia designer who builds things that work both technically and visually. I'm analytical and structured, but I never forget that it has to feel right for the person using it.</p>
-          <p class="lead">I study multimedia design at UCN in Aalborg and work across frontend development, UX/UI and visual design.</p>
+          <p class="lead">I'm a multimedia designer who builds things that work <strong>both technically and visually</strong>. I'm analytical and structured, but I never forget that it has to <strong>feel right for the person using it</strong>.</p>
+          <p class="lead">I study multimedia design at UCN in Aalborg and work across <strong>frontend development, UX/UI and visual design</strong>.</p>
           <p class="lead">Curious? <a class="text-link" href="<?php echo get_post_type_archive_link('project'); ?>">See my projects</a> or <a class="text-link" href="<?php echo site_url('/contact'); ?>">get in touch</a>.</p>
         </div>
       </div>
@@ -259,6 +260,38 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ABOUT TEASER -->
+<section class="wrap about-teaser" aria-labelledby="about-teaser-heading">
+  <div class="split">
+
+    <div class="about-teaser-milestones">
+      <p class="milestones-label mono">Milestones</p>
+      <ol class="milestones">
+        <li><span class="milestone-year mono">2023</span><span>Founded Supernova Gaming League, a tournament organiser whose players went on to teams like fnatic and MOUZ NXT</span></li>
+        <li><span class="milestone-year mono">2023</span><span>Started designing graphics for esports projects</span></li>
+        <li><span class="milestone-year mono">2024</span><span>Roster announcement and banners for SemperFI, a professional Australian team</span></li>
+        <li class="is-current"><span class="milestone-year mono">2025</span><span>Studying multimedia design at UCN, Aalborg <b class="milestone-now mono">Now</b></span></li>
+        <li class="is-upcoming"><span class="milestone-year mono">Next</span><span>A frontend or UX/UI internship</span></li>
+        <li class="is-upcoming"><span class="milestone-year mono">2027</span><span>Graduate as a multimedia designer</span></li>
+        <li class="is-goal"><span class="milestone-year mono">Beyond</span><span>Design and build for esports organisations <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></span></li>
+      </ol>
+      <a class="btn btn-outline milestones-cv" href="!!!CV HERE!!!" download>Download full CV <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="about-teaser-text">
+      <p class="tag mono"><b>05</b><span>Personal</span></p>
+      <h2 class="display header-large" id="about-teaser-heading">Calm under pressure.<br><span class="acc">Sharp on details.</span></h2>
+      <p class="lead">When I ask people around me to describe me, the same words keep coming back: <strong>analytical, loyal, empathetic and dedicated</strong>. My About page covers the rest: my background, what drives me and where I'm heading.</p>
+
+      <div class="about-teaser-buttons">
+        <a class="btn btn-solid" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+        <a class="btn btn-outline" href="<?php echo site_url("/about"); ?>">More about me</a>
+      </div>
+    </div>
+
   </div>
 </section>
 <?php } ?>
