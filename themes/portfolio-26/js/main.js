@@ -193,3 +193,30 @@ skillTabs.forEach((tab, index) => {
         })
     })
 })
+
+// WORK PAGE: FILTERS
+const filterButtons = document.querySelectorAll(".filter")
+const projectCards = document.querySelectorAll(".project-grid .project-card")
+const projectCount = document.querySelector(".project-count")
+const filterEmpty = document.querySelector(".filter-empty")
+
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const filter = button.dataset.filter
+        let visible = 0
+
+        filterButtons.forEach((otherButton) => {
+            otherButton.classList.toggle("is-active", otherButton === button)
+        })
+
+        projectCards.forEach((card) => {
+            const matches = filter === "all" || card.dataset.disciplines.toLowerCase().includes(filter)
+            card.hidden = !matches
+
+            if (matches) visible++
+        })
+
+        projectCount.textContent = visible
+        filterEmpty.hidden = visible > 0
+    })
+})

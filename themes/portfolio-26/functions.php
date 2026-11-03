@@ -14,3 +14,11 @@ function portfolio_features() {
 }
 add_action('after_setup_theme', 'portfolio_features');
 
+function portfolio_adjust_queries($query) {
+    if (!is_admin() and is_post_type_archive("project") and $query->is_main_query()) {
+        $query->set("meta_key", "project_number");
+        $query->set("orderby", "meta_value");
+        $query->set("order", "DESC");
+    } 
+}
+add_action("pre_get_posts", "portfolio_adjust_queries");

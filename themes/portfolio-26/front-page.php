@@ -97,7 +97,7 @@
     </div>
   </div>
 
-  <div class="pool">
+  <div class="project-grid">
     <?php 
     $homepageProjects = new WP_Query(array(
       "posts_per_page" => 3,

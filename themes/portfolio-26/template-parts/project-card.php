@@ -1,4 +1,4 @@
-<a href="<?php the_permalink(); ?>" class="project-card">
+<a class="project-card" href="<?php the_permalink(); ?>" data-disciplines="<?php echo esc_attr(get_field('project_disciplines')); ?>">
     <div class="project-image">
         <?php the_post_thumbnail("large"); ?>
         <span class="project-code" aria-hidden="true"><?php the_field("project_code"); ?></span>
