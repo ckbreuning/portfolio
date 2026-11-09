@@ -1031,37 +1031,8 @@ textarea:focus-visible {
     border-bottom: 1px solid rgb(var(--line));
 }
 
-.chapters .wrap {
-    position: relative;
-}
-
-.chapters .wrap::after {
-    content: "";
-    position: absolute;
-    left: var(--gut);
-    right: var(--gut);
-    bottom: -1px;
-    height: 3px;
-    background-color: rgb(var(--acc));
-    transform-origin: left;
-    animation: read-progress linear both;
-    animation-timeline: scroll();
-}
-
-@keyframes read-progress {
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
-}
-
 .chapter-list {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(120px, 1fr);
+    display: flex;
     gap: 4px;
     overflow-x: auto;
     scrollbar-width: none;
@@ -1092,6 +1063,15 @@ textarea:focus-visible {
     a.is-current .chapter-number {
         color: rgb(var(--acc));
     }
+
+    li {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    li:has(.is-current) {
+        min-width: max-content;
+    }
 }
 
 .chapter-number {
@@ -1099,11 +1079,12 @@ textarea:focus-visible {
 }
 
 .chapter-name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font: 700 16px var(--f-display);
     text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* CASE STUDY HEADER */

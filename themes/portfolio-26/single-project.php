@@ -90,9 +90,12 @@
 
                         <?php if ($data["image"]) { ?>
                             <figure class="case-figure">
-                                <img src="<?php echo $data["image"]["sizes"]["large"]; ?>" alt="<?php echo esc_attr($data["image"]["alt"]); ?>">
+                                <?php
+                                    $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
+                                    echo wp_get_attachment_image($imageId, "large");
+                                ?>
                                 <?php if ($data["image_caption"]) { ?>
-                                    <figcaption class="mono"><?php echo esc_html($data["image_caption"]); ?></figcaption>
+                                <figcaption class="mono"><?php echo esc_html($data["image_caption"]); ?></figcaption>
                                 <?php } ?>
                             </figure>
                         <?php } ?>
