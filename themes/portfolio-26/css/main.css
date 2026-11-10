@@ -2129,6 +2129,20 @@ textarea:focus-visible {
     color: rgb(var(--muted));
 }
 
+@media (max-width: 400px) {
+    .contact-links a {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2px;
+        padding: 12px 20px;
+    }
+
+    .contact-link-handle {
+        font-size: 14px;
+    }
+}
+
 .contact-status {
     display: flex;
     align-items: center;
