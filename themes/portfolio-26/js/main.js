@@ -130,6 +130,8 @@ if (scrollHint) {
 // CASE STUDY: CHAPTER NAV
 const chapterLinks = document.querySelectorAll(".chapter-list a")
 const caseSections = document.querySelectorAll(".case-section")
+const chapterList = document.querySelector(".chapter-list")
+let lastChapter = null
 
 function highlightChapter() {
     const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4
@@ -157,6 +159,12 @@ function highlightChapter() {
         link.classList.toggle("is-current", isCurrent)
         link.classList.toggle("is-past", beforeCurrent)
     })
+
+    if (current !== null && current !== lastChapter) {
+        const currentLink = chapterList.querySelector(".is-current")
+        chapterList.scrollTo({ left: currentLink.parentElement.offsetLeft - chapterList.offsetLeft, behavior: "smooth" })
+        lastChapter = current
+    }
 }
 
 if (caseSections.length) {
