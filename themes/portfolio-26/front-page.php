@@ -285,7 +285,7 @@
         <li class="is-upcoming"><span class="milestone-year mono">2027</span><span>Graduate as a multimedia designer</span></li>
         <li class="is-goal"><span class="milestone-year mono">Beyond</span><span>Design and build for esports organisations <i class="fa-solid fa-flag-checkered"></i></span></li>
       </ol>
-      <a class="btn btn-outline milestones-cv" href="!!!CV HERE!!!" download>Download full CV <i class="fa-solid fa-download"></i></a>
+      <?php /* CV: <a class="btn btn-outline milestones-cv" href="YOUR-CV-LINK.pdf" download>Download full CV</a> */ ?>
     </div>
 
     <div class="about-teaser-text">
