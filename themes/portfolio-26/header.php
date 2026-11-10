@@ -11,7 +11,7 @@
 
 <header class="top">
     <div class="wrap top-row">
-        <a href="<?php echo site_url('/'); ?>" class="logo" aria-label="Christian Breuning, home">
+        <a href="<?php echo site_url('/'); ?>" class="logo">
             <?php get_template_part('template-parts/logo'); ?>
         </a>
 

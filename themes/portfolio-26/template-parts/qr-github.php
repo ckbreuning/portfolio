@@ -1,7 +1,6 @@
 <!-- https://copilot.cloud.microsoft/chat/share/eyJzaGFyZUlkIjoiZWNlZDZhZDktOWQ5My00MzNmLWFjZWEtZTFjY2UyMmQ2ZmM5IiwiY29udmVyc2F0aW9uSWQiOiI5MTdhZTQ1Yi1jODM4LTQ3NDItYjAyMi04NjNlZWFkM2YzMzkifQ%3D%3D -->
 <svg
 	class="qr-svg"
-	aria-hidden="true"
 	focusable="false"
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 29 29"

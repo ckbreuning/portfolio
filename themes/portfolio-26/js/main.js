@@ -220,3 +220,44 @@ filterButtons.forEach((button) => {
         filterEmpty.hidden = visible > 0
     })
 })
+
+// IMAGE LIGHTBOX
+const lightbox = document.querySelector(".lightbox")
+const zoomButtons = document.querySelectorAll(".zoom")
+
+if (lightbox) {
+    const lightboxImage = lightbox.querySelector(".lightbox-image")
+    const lightboxClose = lightbox.querySelector(".lightbox-close")
+
+    zoomButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            lightboxImage.src = button.dataset.full
+            lightboxImage.alt = button.querySelector("img").alt
+            lightbox.showModal()
+
+            document.body.classList.add("is-locked")
+        })
+    })
+
+    lightboxClose.addEventListener("click", () => {
+        lightbox.close()
+    })
+
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            lightbox.close()
+        }
+    })
+
+    lightboxImage.addEventListener("click", () => {
+        lightbox.classList.toggle("is-zoomed")
+
+        lightbox.scrollLeft = (lightbox.scrollWidth - lightbox.clientWidth) / 2
+        lightbox.scrollTop = (lightbox.scrollHeight - lightbox.clientHeight) / 2
+    })
+
+    lightbox.addEventListener("close", () => {
+        lightbox.classList.remove("is-zoomed")
+        document.body.classList.remove("is-locked")
+    })
+}

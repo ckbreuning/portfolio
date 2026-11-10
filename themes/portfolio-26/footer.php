@@ -4,7 +4,7 @@
     <div class="footer-bottom mono">
         <span>&copy; <?php echo date("Y"); ?> Christian Breuning</span>
         <span>Designed and built by Christian Breuning</span>
-        <a class="footer-link" href="#">Back to the top <i class="fa-solid fa-arrow-up-long" aria-hidden="true"></i></a>
+        <a class="footer-link" href="#">Back to the top <i class="fa-solid fa-arrow-up-long"></i></a>
     </div>
 </footer>
 

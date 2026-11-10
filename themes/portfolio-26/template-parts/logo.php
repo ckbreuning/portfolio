@@ -1,4 +1,4 @@
-<svg class="logo-svg" viewBox="0 0 1309 377" aria-hidden="true" focusable="false">
+<svg class="logo-svg" viewBox="0 0 1309 377" focusable="false">
   <g transform="matrix(1,0,0,1,-999.805187,-581.100404)">
     <path fill="rgb(var(--brand))" d="M1185.8,899.1C1185.8,899.1 1036.5,818.2 1006.6,795.1C997.5,788.1 997.5,767.7 1006.6,760.7C1036.5,737.6 1185.8,656.7 1185.8,656.7L1185.8,689.9L1019.8,787.1C1019.8,787.1 1014.3,766.1 1019.8,768.7C1047.5,781.8 1185.8,865.9 1185.8,865.9L1185.8,899.1Z"/>
     <g fill="currentColor">

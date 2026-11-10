@@ -16,7 +16,7 @@
         "reflection" => "Reflection"
     );
     ?>
-    <nav class="chapters" aria-label="Case study chapters">
+    <nav class="chapters">
         <div class="wrap">
             <ol class="chapter-list">
                 <li><a href="#intro"><span class="chapter-number">00</span><span class="chapter-name"><?php the_title(); ?></span></a></li>
@@ -24,7 +24,7 @@
                 <?php 
                 $chapterNumber = 2;
                 foreach ($sections as $name => $title) {
-                     $data = get_field($name);
+                    $data = get_field($name);
                     if ($data and $data["text"]) { ?>
                     <!-- https://stackoverflow.com/questions/5659042/php-prepend-leading-zero-before-single-digit-number-on-the-fly -->
                     <li><a href="#<?php echo $name; ?>"><span class="chapter-number"><?php echo str_pad($chapterNumber, 2, "0", STR_PAD_LEFT); ?></span><span class="chapter-name"><?php echo $title; ?></span></a></li>
@@ -36,8 +36,8 @@
     </nav>
 
     <div class="wrap">
-        <section class="case-head case-section" id="intro" aria-label="Introduction">
-            <a href="<?php echo get_post_type_archive_link('project'); ?>" class="back-link mono"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>All work</a>
+        <section class="case-head case-section" id="intro">
+            <a href="<?php echo get_post_type_archive_link('project'); ?>" class="back-link mono"><i class="fa-solid fa-arrow-left-long"></i>All work</a>
 
             <div class="split case-intro">
                 <div>
@@ -51,7 +51,7 @@
         </section>
 
         <article class="case">
-            <section class="case-section" id="overview" aria-label="Overview">
+            <section class="case-section" id="overview">
                 <p class="tag mono"><b>01</b><span>Overview</span></p>
                 <dl class="facts">
                     <div>
@@ -72,7 +72,7 @@
                     </div>
                 </dl>
                 <?php if (get_field("project_live_url")) { ?>
-                    <a class="btn btn-solid case-live" href="<?php the_field("project_live_url"); ?>" target="_blank">Visit the live site <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    <a class="btn btn-solid case-live" href="<?php the_field("project_live_url"); ?>" target="_blank">Visit the live site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 <?php } ?>
             </section>
 
@@ -80,22 +80,26 @@
             $number = 2;
             foreach ($sections as $name => $title) {
                 $data = get_field($name);
-            
+
                 if ($data and $data["text"]) { ?>
-                    <section class="case-section" id="<?php echo $name; ?>" aria-labelledby="<?php echo $name; ?>-heading">
+                    <section class="case-section <?php if (!$data["image"]) { echo "case-section-text"; } ?>" id="<?php echo $name; ?>">
                         <p class="tag mono"><b><?php echo str_pad($number, 2, "0", STR_PAD_LEFT); ?></b><span><?php echo $title; ?></span></p>
-                        <h2 class="display header-large case-heading" id="<?php echo $name; ?>-heading"><?php echo $data["heading"] ? $data["heading"] : $title; ?></h2>
+                        <h2 class="display header-large case-heading"><?php echo $data["heading"] ? $data["heading"] : $title; ?></h2>
 
                         <div class="case-text"><?php echo $data["text"]; ?></div>
 
-                        <?php if ($data["image"]) { ?>
-                            <figure class="case-figure">
-                                <?php
-                                    $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
-                                    echo wp_get_attachment_image($imageId, "large");
-                                ?>
+                        <?php if ($data["image"]) {
+                            $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
+
+                            $imageSize = wp_get_attachment_image_src($imageId, "full");
+                            $isWide = $imageSize[1] > $imageSize[2]; ?>
+                            <figure class="case-figure <?php if ($isWide) { echo "is-wide"; } ?>">
+                                <button class="zoom" type="button" data-full="<?php echo esc_url($imageSize[0]); ?>">
+                                    <?php echo wp_get_attachment_image($imageId, "large"); ?>
+                                    <span class="zoom-icon"><i class="fa-solid fa-expand"></i></span>
+                                </button>
                                 <?php if ($data["image_caption"]) { ?>
-                                <figcaption class="mono"><?php echo esc_html($data["image_caption"]); ?></figcaption>
+                                    <figcaption class="mono"><?php echo esc_html($data["image_caption"]); ?></figcaption>
                                 <?php } ?>
                             </figure>
                         <?php } ?>
@@ -105,19 +109,24 @@
                                 <figcaption class="mono"><?php echo esc_html($data["code_file"]); ?></figcaption>
                                 <pre><code><?php echo esc_html($data["code"]); ?></code></pre>
                             </figure>
-                            <?php } ?>
+                        <?php } ?>
                     </section>
                     <?php $number++;
                 }
             } ?>
-            
+
             <div class="case-end">
-                <a class="btn btn-outline" href="<?php echo get_post_type_archive_link("project"); ?>"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i>All work</a>
-                <a class="btn btn-solid" href="<?php echo site_url("/contact"); ?>">Talk about this project <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+                <a class="btn btn-outline" href="<?php echo get_post_type_archive_link("project"); ?>"><i class="fa-solid fa-arrow-left-long"></i>All work</a>
+                <a class="btn btn-solid" href="<?php echo site_url("/contact"); ?>">Talk about this project <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
         </article>
     </div>
 <?php } ?>
+
+    <dialog class="lightbox">
+        <button class="lightbox-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+        <img class="lightbox-image" alt="">
+    </dialog>
 </main>
 
 <?php get_footer(); ?>

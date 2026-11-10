@@ -5,9 +5,9 @@
     the_post(); ?>
 
 <!-- HERO -->
-  <section class="poster" aria-label="Introduction">
-    <span class="plus plus-1" data-depth="-1.2" aria-hidden="true"></span>
-    <span class="plus plus-2" data-depth="1.6" aria-hidden="true"></span>
+  <section class="poster">
+    <span class="plus plus-1" data-depth="-1.2"></span>
+    <span class="plus plus-2" data-depth="1.6"></span>
 
     <div class="wrap poster-grid">
       <div class="poster-top">
@@ -15,7 +15,7 @@
           <?php get_template_part("template-parts/logo"); ?>
           <span>Portfolio - Aalborg, Denmark</span>
         </div>
-        <a href="https://github.com/ckbreuning" class="qr-link" aria-label="My GitHub profile" target="_blank">
+        <a href="https://github.com/ckbreuning" class="qr-link" target="_blank">
           <?php get_template_part("template-parts/qr-github"); ?>
         </a>
       </div>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="poster-radar">
-        <svg class="radar" viewBox="0 0 200 200" role="group" aria-label="Shortcuts">
+        <svg class="radar" viewBox="0 0 200 200" role="group">
           <circle class="ring" cx="100" cy="100" r="92"/>
           <circle class="ring" cx="100" cy="100" r="62"/>
           <circle class="ring" cx="100" cy="100" r="32"/>
@@ -54,23 +54,23 @@
 
       <div class="poster-meta">
         <span class="status mono"><span class="status-dot"></span>Open for internship &amp; freelance</span>
-        <a href="<?php echo get_post_type_archive_link('project'); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+        <a href="<?php echo get_post_type_archive_link('project'); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long"></i></a>
       </div>
     </div>
 
-    <a class="scroll-hint" href="#intro" aria-label="Scroll to the introduction">
-      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    <a class="scroll-hint" href="#intro">
+      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-chevron-down"></i>
     </a>
   </section>
 
 <!-- INTRO -->
-  <section class="intro" id="intro" aria-labelledby="intro-heading">
+  <section class="intro" id="intro">
     <ul class="feed">
-      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-code" aria-hidden="true"></i><span>Frontend Development</span></li>
-      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>UX/UI Design</span></li>
-      <li class="feed-row"><span class="feed-who" aria-hidden="true">CKB</span><i class="fa-solid fa-swatchbook" aria-hidden="true"></i><span>Visual Design</span></li>
+      <li class="feed-row"><span class="feed-who">CKB</span><i class="fa-solid fa-code"></i><span>Frontend Development</span></li>
+      <li class="feed-row"><span class="feed-who">CKB</span><i class="fa-solid fa-layer-group"></i><span>UX/UI Design</span></li>
+      <li class="feed-row"><span class="feed-who">CKB</span><i class="fa-solid fa-swatchbook"></i><span>Visual Design</span></li>
     </ul>
 
     <div class="wrap intro-content">
@@ -89,7 +89,7 @@
   </section>
 
 <!-- SELECTED WORK -->
-<section class="wrap work" aria-labelledby="work-heading">
+<section class="wrap work">
   <div class="work-head">
     <div>
       <p class="tag mono"><b>02</b><span>Case studies</span></p>
@@ -117,7 +117,7 @@
 </section>
 
 <!-- HOW I WORK -->
-<section class="wrap process" id="process" aria-labelledby="process-heading">
+<section class="wrap process" id="process">
 
   <div class="process-head">
     <div>
@@ -129,38 +129,38 @@
 
   <div class="timeline">
 
-    <svg class="timeline-loop" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="timeline-loop" viewBox="0 0 1000 100" preserveAspectRatio="none">
       <path d="M808 100 C 720 0, 500 0, 408 100"/>
     </svg>
-    <span class="timeline-loop-label mono" aria-hidden="true">Back to design</span>
+    <span class="timeline-loop-label mono">Back to design</span>
 
     <ol class="timeline-steps">
       <li class="timeline-step">
-        <span class="timeline-node" aria-hidden="true"></span>
+        <span class="timeline-node"></span>
         <p class="timeline-number mono">01</p>
         <h3 class="display timeline-name">Research</h3>
         <p class="timeline-text">Interviews, client meetings and affinity diagrams. Nothing gets designed before I know what people actually need.</p>
       </li>
       <li class="timeline-step">
-        <span class="timeline-node" aria-hidden="true"></span>
+        <span class="timeline-node"></span>
         <p class="timeline-number mono">02</p>
         <h3 class="display timeline-name">Define</h3>
         <p class="timeline-text">One clear goal, a content sitemap and priorities, so the time goes to the things that matter most.</p>
       </li>
       <li class="timeline-step">
-        <span class="timeline-node" aria-hidden="true"></span>
+        <span class="timeline-node"></span>
         <p class="timeline-number mono">03</p>
         <h3 class="display timeline-name">Design</h3>
         <p class="timeline-text">Sketches, then wireframes in Figma, then a visual system with colours checked for contrast.</p>
       </li>
       <li class="timeline-step">
-        <span class="timeline-node" aria-hidden="true"></span>
+        <span class="timeline-node"></span>
         <p class="timeline-number mono">04</p>
         <h3 class="display timeline-name">Build</h3>
         <p class="timeline-text">Semantic HTML, CSS and my own JavaScript, versioned in Git and measured in Lighthouse.</p>
       </li>
       <li class="timeline-step">
-        <span class="timeline-node" aria-hidden="true"></span>
+        <span class="timeline-node"></span>
         <p class="timeline-number mono">05</p>
         <h3 class="display timeline-name">Test &amp; iterate</h3>
         <p class="timeline-text">Tests with real users, then back to the design with what they showed me.</p>
@@ -170,19 +170,19 @@
 </section>
 
 <!-- SKILLS -->
-<section class="wrap skills" id="skills" aria-labelledby="skills-heading">
+<section class="wrap skills" id="skills">
   <p class="tag mono"><b>04</b><span>Skills</span></p>
   <h2 class="display header-xl skills-heading" id="skills-heading">What I work with</h2>
 
   <div class="skill">
     <div class="skill-tabs">
-      <button type="button" class="skill-tab is-active" aria-pressed="true"><span class="skill-key mono">1</span>Code</button>
-      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">2</span>UX &amp; research</button>
-      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">3</span>UI &amp; visual</button>
-      <button type="button" class="skill-tab" aria-pressed="false"><span class="skill-key mono">4</span>Tools &amp; process</button>
+      <button type="button" class="skill-tab is-active"><span class="skill-key mono">1</span>Code</button>
+      <button type="button" class="skill-tab"><span class="skill-key mono">2</span>UX &amp; research</button>
+      <button type="button" class="skill-tab"><span class="skill-key mono">3</span>UI &amp; visual</button>
+      <button type="button" class="skill-tab"><span class="skill-key mono">4</span>Tools &amp; process</button>
     </div>
 
-    <div class="skill-panels" aria-live="polite">
+    <div class="skill-panels">
 
       <!-- 1. FRONTEND -->
       <div class="skill-panel">
@@ -271,7 +271,7 @@
 </section>
 
 <!-- ABOUT TEASER -->
-<section class="wrap about-teaser" aria-labelledby="about-teaser-heading">
+<section class="wrap about-teaser">
   <div class="split">
 
     <div class="about-teaser-milestones">
@@ -283,9 +283,9 @@
         <li class="is-current"><span class="milestone-year mono">2025</span><span>Studying multimedia design at UCN, Aalborg <b class="milestone-now mono">Now</b></span></li>
         <li class="is-upcoming"><span class="milestone-year mono">Next</span><span>A frontend or UX/UI internship</span></li>
         <li class="is-upcoming"><span class="milestone-year mono">2027</span><span>Graduate as a multimedia designer</span></li>
-        <li class="is-goal"><span class="milestone-year mono">Beyond</span><span>Design and build for esports organisations <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></span></li>
+        <li class="is-goal"><span class="milestone-year mono">Beyond</span><span>Design and build for esports organisations <i class="fa-solid fa-flag-checkered"></i></span></li>
       </ol>
-      <a class="btn btn-outline milestones-cv" href="!!!CV HERE!!!" download>Download full CV <i class="fa-solid fa-download" aria-hidden="true"></i></a>
+      <a class="btn btn-outline milestones-cv" href="!!!CV HERE!!!" download>Download full CV <i class="fa-solid fa-download"></i></a>
     </div>
 
     <div class="about-teaser-text">
@@ -294,7 +294,7 @@
       <p class="lead">When I ask people around me to describe me, the same words keep coming back: <strong>analytical, loyal, empathetic and dedicated</strong>. My About page covers the rest: my background, what drives me and where I'm heading.</p>
 
       <div class="about-teaser-buttons">
-        <a class="btn btn-solid" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+        <a class="btn btn-solid" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long"></i></a>
         <a class="btn btn-outline" href="<?php echo site_url("/about"); ?>">More about me</a>
       </div>
     </div>
@@ -303,20 +303,20 @@
 </section>
 
 <!-- CONTACT -->
-<section class="wrap contact" id="contact" aria-labelledby="contact-heading">
+<section class="wrap contact" id="contact">
   <div class="accept">
     <p class="mono accept-label">Next challenge</p>
     <h2 class="display accept-heading" id="contact-heading">Let's work together</h2>
     <p class="accept-text">Internship, freelance or a question about a project. Send me a message, and I'll get back to you.</p>
 
-    <div class="accept-bar" aria-hidden="true"><span></span></div>
+    <div class="accept-bar"><span></span></div>
 
-    <a class="btn accept-btn" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="btn accept-btn" href="<?php echo site_url("/contact"); ?>">Get in touch <i class="fa-solid fa-arrow-right-long"></i></a>
     <a class="accept-email mono" href="mailto:ckbreuning@gmail.com">ckbreuning@gmail.com</a>
 
     <div class="accept-links">
-      <a class="btn btn-outline" href="https://linkedin.com/in/christian-breuning" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
-      <a class="btn btn-outline" href="https://github.com/ckbreuning" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
+      <a class="btn btn-outline" href="https://linkedin.com/in/christian-breuning" target="_blank"><i class="fa-brands fa-linkedin"></i>LinkedIn</a>
+      <a class="btn btn-outline" href="https://github.com/ckbreuning" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
     </div>
   </div>
 </section>
