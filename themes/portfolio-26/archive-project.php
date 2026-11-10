@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-<main id="main" class="wrap work-page">
+<main id="main" class="wrap page-pad work-page">
     <div class="work-head">
         <div>
             <p class="tag mono"><b class="project-count"><?php echo $wp_query->found_posts; ?></b><span>Case studies</span></p>
-            <h1 class="display header-xl work-heading">Work</h1>
+            <h1 class="display header-xl work-heading">Work<span class="acc">.</span></h1>
         </div>
-        <p class="work-intro">Every project, from research and design to the finished build.</p>
+        <p class="lead work-intro">Every project, from research and design to the finished build.</p>
     </div>
 
     <div class="filters">

@@ -36,8 +36,8 @@ html {
 
     /* FONTS */
     --f-display: "Tektur", "Arial Black", system-ui, sans-serif;
-    --f-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 
     /* GUTTERS */
     --gut: clamp(16px, 4vw, 48px);
@@ -1998,6 +1998,244 @@ textarea:focus-visible {
     }
 }
 
+/* CONTACT PAGE */
+.contact-heading {
+    margin-top: 18px;
+    font-size: clamp(56px, 9vw, 150px);
+}
+
+.contact-head .lead {
+    margin-top: 20px;
+}
+
+.contact-grid {
+    margin-top: 48px;
+}
+
+.contact-side {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-card {
+    padding: 20px;
+    background-color: rgb(var(--panel));
+    border: 1px solid rgb(var(--line));
+}
+
+.contact-email-card {
+    position: relative;
+}
+
+.contact-email-card::before,
+.contact-email-card::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 12px;
+    height: 12px;
+    border: 0 solid rgb(var(--acc));
+    pointer-events: none;
+}
+
+.contact-email-card::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+.contact-email-card::after {
+    right: -1px;
+    bottom: -1px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.contact-label {
+    font-size: 14px;
+    color: rgb(var(--muted));
+}
+
+.contact-email-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.contact-email {
+    font: 800 clamp(20px, 2vw, 28px) var(--f-display);
+    transition: color .2s;
+}
+
+.contact-email:hover {
+    color: rgb(var(--acc));
+}
+
+.copy-btn {
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid rgb(var(--line));
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+}
+
+.copy-btn:hover {
+    border-color: rgb(var(--acc));
+    color: rgb(var(--acc));
+}
+
+.copy-status {
+    min-height: 22px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: rgb(var(--acc));
+}
+
+.contact-links {
+    padding: 0;
+
+    a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        min-height: 60px;
+        padding: 0 20px;
+        border-bottom: 1px solid rgb(var(--line));
+        transition: background-color .2s;
+    }
+
+    a:last-child {
+        border-bottom: none;
+    }
+
+    a:hover {
+        background-color: rgb(var(--panel2));
+    }
+}
+
+.contact-link-name {
+    font: 700 18px var(--f-display);
+    text-transform: uppercase;
+}
+
+.contact-link-handle {
+    color: rgb(var(--muted));
+}
+
+.contact-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgb(var(--acc));
+}
+
+.contact-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgb(var(--acc));
+}
+
+
+
+/* CONTACT FORM */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .btn {
+        align-self: flex-start;
+    }
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+        font-size: 14px;
+        color: rgb(var(--muted));
+    }
+
+    /* Contact Form 7 indsætter et span-element omkring hvert felt */
+    .wpcf7-form-control-wrap {
+        display: block;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 14px 16px;
+        background-color: rgb(var(--panel));
+        border: 1px solid rgb(var(--line));
+        color: rgb(var(--ink));
+        font: inherit;
+        transition: border-color .2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: rgb(var(--acc));
+    }
+
+    textarea {
+        min-height: 120px;
+        height: 120px;
+        resize: vertical;
+    }
+
+    /* Et required felt, der er tomt eller indeholder en forkert info */
+    .wpcf7-not-valid {
+        border-color: rgb(var(--red));
+    }
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+@media (max-width: 600px) {
+    .field-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Meddelelsen under et felt, der er udfyldt forkert, f.eks. "Udfyld venligst dette felt." */
+.wpcf7-not-valid-tip {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgb(var(--red));
+}
+
+/* Meddelelsen efter afsendelse. De ekstra klasser overskriver pluginets eget CSS */
+.contact-form .wpcf7 form .wpcf7-response-output {
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid rgb(var(--red));
+    background-color: rgba(var(--red), .08);
+    color: rgb(var(--ink));
+}
+
+.contact-form .wpcf7 form.sent .wpcf7-response-output {
+    border-color: rgb(var(--acc));
+    background-color: rgba(var(--acc), .08);
+}
+
 /* FOOTER */
 .site-footer {
     margin-top: 128px;
@@ -2023,6 +2261,7 @@ textarea:focus-visible {
 /* CROSSHAIR & CORNERS */
 .has-crosshair a,
 .has-crosshair button,
+.has-crosshair input[type="submit"],
 .has-crosshair .poster {
     cursor: none;
 }

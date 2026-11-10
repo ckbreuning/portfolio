@@ -37,7 +37,7 @@
 
     <div class="wrap">
         <section class="case-head case-section" id="intro">
-            <a href="<?php echo get_post_type_archive_link('project'); ?>" class="back-link mono"><i class="fa-solid fa-arrow-left-long"></i>All work</a>
+            <a href="<?php echo get_post_type_archive_link("project"); ?>" class="back-link mono"><i class="fa-solid fa-arrow-left-long"></i>All work</a>
 
             <div class="split case-intro">
                 <div>

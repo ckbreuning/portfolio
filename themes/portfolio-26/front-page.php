@@ -30,11 +30,11 @@
       <p class="note note-4" data-depth="0.9"><span class="note-label mono">Based in:</span><b>Aalborg, Denmark</b></p>
 
       <div class="poster-photo" data-depth="0.35">
-        <?php the_post_thumbnail('large'); ?>
+        <?php the_post_thumbnail("large"); ?>
       </div>
 
       <div class="poster-radar">
-        <svg class="radar" viewBox="0 0 200 200" role="group">
+        <svg class="radar" viewBox="0 0 200 200">
           <circle class="ring" cx="100" cy="100" r="92"/>
           <circle class="ring" cx="100" cy="100" r="62"/>
           <circle class="ring" cx="100" cy="100" r="32"/>
@@ -45,16 +45,16 @@
             <path class="sweep-line" d="M100 100L100 8"/>
           </g>
 
-          <a class="blip" href="<?php echo get_post_type_archive_link('project'); ?>"><circle cx="146" cy="58" r="5"/><text x="146" y="48" text-anchor="middle">WORK</text></a>
-          <a class="blip" href="<?php echo site_url('/about'); ?>"><circle cx="52" cy="70" r="5"/><text x="52" y="60" text-anchor="middle">ABOUT</text></a>
+          <a class="blip" href="<?php echo get_post_type_archive_link("project"); ?>"><circle cx="146" cy="58" r="5"/><text x="146" y="48" text-anchor="middle">WORK</text></a>
+          <a class="blip" href="<?php echo site_url("/about"); ?>"><circle cx="52" cy="70" r="5"/><text x="52" y="60" text-anchor="middle">ABOUT</text></a>
           <a class="blip" href="#process"><circle cx="50" cy="150" r="5"/><text x="50" y="140" text-anchor="middle">PROCESS</text></a>
-          <a class="blip" href="<?php echo site_url('/contact'); ?>"><circle cx="150" cy="150" r="5"/><text x="150" y="140" text-anchor="middle">CONTACT</text></a>
+          <a class="blip" href="<?php echo site_url("/contact"); ?>"><circle cx="150" cy="150" r="5"/><text x="150" y="140" text-anchor="middle">CONTACT</text></a>
         </svg>
       </div>
 
       <div class="poster-meta">
         <span class="status mono"><span class="status-dot"></span>Open for internship &amp; freelance</span>
-        <a href="<?php echo get_post_type_archive_link('project'); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="<?php echo get_post_type_archive_link("project"); ?>" class="btn btn-ink">See my projects <i class="fa-solid fa-arrow-right-long"></i></a>
       </div>
     </div>
 
@@ -82,7 +82,7 @@
         <div class="intro-text">
           <p class="lead">I'm a multimedia designer who builds things that work <strong>both technically and visually</strong>. I'm analytical and structured, but I never forget that it has to <strong>feel right for the person using it</strong>.</p>
           <p class="lead">I study multimedia design at UCN in Aalborg and work across <strong>frontend development, UX/UI and visual design</strong>.</p>
-          <p class="lead">Curious? <a class="text-link" href="<?php echo get_post_type_archive_link('project'); ?>">See my projects</a> or <a class="text-link" href="<?php echo site_url('/contact'); ?>">get in touch</a>.</p>
+          <p class="lead">Curious? <a class="text-link" href="<?php echo get_post_type_archive_link("project"); ?>">See my projects</a> or <a class="text-link" href="<?php echo site_url("/contact"); ?>">get in touch</a>.</p>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
   <div class="work-head">
     <div>
       <p class="tag mono"><b>02</b><span>Case studies</span></p>
-      <h2 class="display header-xl work-heading" id="work-heading">Selected work</h2>
+      <h2 class="display header-xl work-heading" id="work-heading">Selected work<span class="acc">.</span></h2>
     </div>
   </div>
 
@@ -122,7 +122,7 @@
   <div class="process-head">
     <div>
       <p class="tag mono"><b>03</b><span>My process</span></p>
-      <h2 class="display header-xl process-heading" id="process-heading">How I work</h2>
+      <h2 class="display header-xl process-heading" id="process-heading">How I work<span class="acc">.</span></h2>
     </div>
     <p class="lead">I work through five steps on every project, but not in a straight line. What I learn from testing usually sends me back to improve the design.</p>
   </div>
@@ -172,7 +172,7 @@
 <!-- SKILLS -->
 <section class="wrap skills" id="skills">
   <p class="tag mono"><b>04</b><span>Skills</span></p>
-  <h2 class="display header-xl skills-heading" id="skills-heading">What I work with</h2>
+  <h2 class="display header-xl skills-heading" id="skills-heading">What I work with<span class="acc">.</span></h2>
 
   <div class="skill">
     <div class="skill-tabs">

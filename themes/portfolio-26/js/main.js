@@ -30,7 +30,7 @@ if (hasMouse) {
         crosshair.style.left = `${clientX}px`
         crosshair.style.top = `${clientY}px`
 
-        const target = e.target.closest("a, button")
+        const target = e.target.closest("a, button, input[type='submit']")
 
         if (target !== currentTarget) {
             currentTarget = target
@@ -268,4 +268,29 @@ if (lightbox) {
         lightbox.classList.remove("is-zoomed")
         document.body.classList.remove("is-locked")
     })
+}
+
+// CONTACT: COPY EMAIL
+// https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
+const copyButton = document.querySelector(".copy-btn")
+const copyStatus = document.querySelector(".copy-status")
+let copyTimer = null
+
+async function copyEmail() {
+    try {
+        await navigator.clipboard.writeText(copyButton.dataset.email)
+        copyStatus.textContent = "Copied to clipboard"
+    } catch (error) {
+        console.error(error.message)
+        copyStatus.textContent = "Couldn't copy. Select the address instead."
+    }
+
+    clearTimeout(copyTimer)
+    copyTimer = setTimeout(() => {
+        copyStatus.textContent = ""
+    }, 3000)
+}
+
+if (copyButton) {
+    copyButton.addEventListener("click", copyEmail)
 }
