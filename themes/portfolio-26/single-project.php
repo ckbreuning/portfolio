@@ -42,7 +42,7 @@
             <div class="split case-intro">
                 <div>
                     <p class="tag mono"><b>Case <?php the_field("project_number"); ?></b><span><?php the_field("project_year"); ?></span></p>
-                    <h1 class="display case-title"><?php the_title(); ?></h1>
+                    <h1 class="display case-title"><?php the_title(); ?><span class="acc">.</span></h1>
                 </div>
                 <p class="lead"><?php echo get_the_excerpt(); ?></p>
             </div>

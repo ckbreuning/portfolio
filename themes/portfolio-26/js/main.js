@@ -294,3 +294,40 @@ async function copyEmail() {
 if (copyButton) {
     copyButton.addEventListener("click", copyEmail)
 }
+
+// MILESTONES
+const milestonesList = document.querySelectorAll(".milestones[data-src]")
+
+milestonesList.forEach((list) => {
+    const onlyHome = list.dataset.show === "home"
+
+    fetch(list.dataset.src)
+        .then((res) => res.json())
+        .then((milestones) => {
+            milestones.forEach((milestone) => {
+                if (onlyHome && !milestone.home) {
+                    return
+                }
+
+                const item = document.createElement("li")
+
+                if (milestone.status) {
+                    item.classList.add(`is-${milestone.status}`)
+                }
+
+                let extra = ""
+                if (milestone.status === "current") {
+                    extra = ` <b class="milestone-now mono">Now</b>`
+                }
+                if (milestone.status === "goal") {
+                    extra = ` <i class="fa-solid fa-flag"></i>`
+                }
+
+                item.innerHTML = `<span class="milestone-year mono">${milestone.year}</span><span>${milestone.text}${extra}</span>`
+                list.appendChild(item)
+            })
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+})

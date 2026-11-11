@@ -1,0 +1,74 @@
+[
+    {
+        "year": "2019",
+        "text": "Started playing competitive Counter-Strike",
+        "status": "",
+        "home": false
+    },
+    {
+        "year": "2020",
+        "text": "Became in-game leader",
+        "status": "",
+        "home": false
+    },
+    {
+        "year": "2023",
+        "text": "Finished HTX at Frederikssund Gymnasium",
+        "status": "",
+        "home": false
+    },
+    {
+        "year": "2023",
+        "text": "Founded Supernova Gaming League",
+        "status": "",
+        "home": true
+    },
+    {
+        "year": "2023",
+        "text": "Started designing graphics for esports projects",
+        "status": "",
+        "home": true
+    },
+    {
+        "year": "2023–25",
+        "text": "Childcare assistant in a nursery",
+        "status": "",
+        "home": false
+    },
+    {
+        "year": "2024",
+        "text": "Roster announcement and banners for SemperFI",
+        "status": "",
+        "home": true
+    },
+    {
+        "year": "2025",
+        "text": "Studying multimedia design at UCN, Aalborg",
+        "status": "current",
+        "home": true
+    },
+    {
+        "year": "2026",
+        "text": "First LAN: Parken Challenger Championship, Copenhagen",
+        "status": "",
+        "home": false
+    },
+    {
+        "year": "Next",
+        "text": "Internship in frontend or UX/UI",
+        "status": "upcoming",
+        "home": true
+    },
+    {
+        "year": "2027",
+        "text": "Graduate as a multimedia designer",
+        "status": "upcoming",
+        "home": true
+    },
+    {
+        "year": "Beyond",
+        "text": "Design and build for esports organisations",
+        "status": "goal",
+        "home": true
+    }
+]

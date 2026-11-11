@@ -276,16 +276,8 @@
 
     <div class="about-teaser-milestones">
       <p class="milestones-label mono">Milestones</p>
-      <ol class="milestones">
-        <li><span class="milestone-year mono">2023</span><span>Founded Supernova Gaming League, a tournament organiser whose players went on to teams like fnatic and MOUZ NXT</span></li>
-        <li><span class="milestone-year mono">2023</span><span>Started designing graphics for esports projects</span></li>
-        <li><span class="milestone-year mono">2024</span><span>Roster announcement and banners for SemperFI, a professional Australian team</span></li>
-        <li class="is-current"><span class="milestone-year mono">2025</span><span>Studying multimedia design at UCN, Aalborg <b class="milestone-now mono">Now</b></span></li>
-        <li class="is-upcoming"><span class="milestone-year mono">Next</span><span>A frontend or UX/UI internship</span></li>
-        <li class="is-upcoming"><span class="milestone-year mono">2027</span><span>Graduate as a multimedia designer</span></li>
-        <li class="is-goal"><span class="milestone-year mono">Beyond</span><span>Design and build for esports organisations <i class="fa-solid fa-flag-checkered"></i></span></li>
-      </ol>
-      <?php /* CV: <a class="btn btn-outline milestones-cv" href="YOUR-CV-LINK.pdf" download>Download full CV</a> */ ?>
+      <ol class="milestones" data-src="<?php echo get_theme_file_uri("data/milestones.json"); ?>" data-show="home"></ol>
+      <!-- CV: <a class="btn btn-outline milestones-cv" href="YOUR-CV-LINK.pdf" download>Download full CV</a> -->
     </div>
 
     <div class="about-teaser-text">
