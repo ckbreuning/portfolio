@@ -14,20 +14,14 @@ jobs:
     - name: "01 · Get the latest code"
       uses: actions/checkout@v6
 
-    - name: "02 · Upload the theme"
-      uses: SamKirkland/web-deploy@v1
-      with:
-        target-server: ssh.cjz6cb2lw.service.one
-        remote-user: cjz6cb2lw_ssh
-        private-ssh-key: ${{ secrets.SSH_KEY }}
-        source-path: ./themes/portfolio-26/
-        destination-path: /customers/d/f/3/cjz6cb2lw/webroots/f902a333/wp-content/themes/portfolio-26/
+    - name: "02 · Install lftp"
+      run: sudo apt-get update && sudo apt-get install -y lftp
 
-    - name: "03 · Upload the mu-plugins"
-      uses: SamKirkland/web-deploy@v1
-      with:
-        target-server: ssh.cjz6cb2lw.service.one
-        remote-user: cjz6cb2lw_ssh
-        private-ssh-key: ${{ secrets.SSH_KEY }}
-        source-path: ./mu-plugins/
-        destination-path: /customers/d/f/3/cjz6cb2lw/webroots/f902a333/wp-content/mu-plugins/
+    - name: "03 · Upload the theme and mu-plugins"
+      env:
+        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+        SFTP_USER: ${{ secrets.SFTP_USER }}
+        LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        WP_CONTENT_PATH: ${{ secrets.WP_CONTENT_PATH }}
+      run: |
+        lftp -c "set sftp:auto-confirm yes; open -u $SFTP_USER --env-password sftp://$SFTP_HOST; mirror --reverse --verbose --exclude-glob .git* ./themes/portfolio-26/ $WP_CONTENT_PATH/themes/portfolio-26/; mirror --reverse --verbose ./mu-plugins/ $WP_CONTENT_PATH/mu-plugins/"
