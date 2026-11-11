@@ -1,0 +1,33 @@
+name: "<ckb/> Deploy to ckbreuning.com"
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: "Ship portfolio-26 to one.com"
+    runs-on: ubuntu-latest
+    steps:
+    - name: "01 · Get the latest code"
+      uses: actions/checkout@v6
+
+    - name: "02 · Upload the theme"
+      uses: SamKirkland/web-deploy@v1
+      with:
+        target-server: ssh.cjz6cb2lw.service.one
+        remote-user: cjz6cb2lw_ssh
+        private-ssh-key: ${{ secrets.SSH_KEY }}
+        source-path: ./themes/portfolio-26/
+        destination-path: /customers/d/f/3/cjz6cb2lw/webroots/f902a333/wp-content/themes/portfolio-26/
+
+    - name: "03 · Upload the mu-plugins"
+      uses: SamKirkland/web-deploy@v1
+      with:
+        target-server: ssh.cjz6cb2lw.service.one
+        remote-user: cjz6cb2lw_ssh
+        private-ssh-key: ${{ secrets.SSH_KEY }}
+        source-path: ./mu-plugins/
+        destination-path: /customers/d/f/3/cjz6cb2lw/webroots/f902a333/wp-content/mu-plugins/
