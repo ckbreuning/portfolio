@@ -28,7 +28,7 @@
  
                 <div class="about-text">
                     <p>My background is broader than most designers'. I've been the in-game leader of Counter-Strike teams for six years, worked in a nursery, and done freelance graphic design on the side. That mix of leadership, empathy and taking responsibility on my own isn't typical for a designer, but it's exactly what shapes how I work.</p>
-                    <p>I finished HTX at Frederikssund Gymnasium in 2023 and took two years off before university. I spent them as a childcare assistant in a nursery and, in my spare time, running Supernova Gaming League, an esports tournament organiser I founded with a group of others.</p>
+                    <p>I finished HTX at Frederikssund Gymnasium in 2023 and took two years off before university. I spent them as a childcare assistant in a nursery and, in my spare time, running Supernova Gaming League, an esports tournament organiser I'd founded with a group of others in 2022, while I was still at HTX.</p>
                     <p>SGL grew bigger than any of us expected. Our tournaments drew players like a former Major finalist, and others have since gone on to teams like fnatic and MOUZ NXT. Around the same time, I started designing graphics for esports projects, and in 2024 I made the roster announcement and profile banners for SemperFi, a professional Australian team.</p>
                     <p>In 2025, I started studying multimedia design at UCN.</p>
                 </div>
