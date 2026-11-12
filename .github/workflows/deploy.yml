@@ -24,5 +24,4 @@ jobs:
         LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
         WP_CONTENT_PATH: ${{ secrets.WP_CONTENT_PATH }}
       run: |
-        echo "Host: ${SFTP_HOST:+set} | User: ${SFTP_USER:+set} | Password: ${LFTP_PASSWORD:+set} | Path: ${WP_CONTENT_PATH:+set}"
-        lftp -d -c "set sftp:auto-confirm yes; set net:max-retries 2; set net:timeout 20; open -u $SFTP_USER --env-password sftp://$SFTP_HOST; ls; mirror --reverse --verbose --exclude-glob .git* ./themes/portfolio-26/ $WP_CONTENT_PATH/themes/portfolio-26/; mirror --reverse --verbose ./mu-plugins/ $WP_CONTENT_PATH/mu-plugins/"gi
+        lftp -c "set sftp:auto-confirm yes; open -u $SFTP_USER --env-password sftp://$SFTP_HOST; mirror --reverse --verbose --exclude-glob .git* ./themes/portfolio-26/ $WP_CONTENT_PATH/themes/portfolio-26/; mirror --reverse --verbose ./mu-plugins/ $WP_CONTENT_PATH/mu-plugins/"
