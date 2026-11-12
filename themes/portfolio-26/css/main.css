@@ -28,7 +28,7 @@ html {
     --brand-p: 10, 122, 87;
     --ct: 126, 164, 255;
     --red: 255, 75, 62;
-    --acc: var(--brand);
+    --acc: var(--red);
     --acc-p: var(--brand-p);
     --on-acc: 12, 13, 15;
 
