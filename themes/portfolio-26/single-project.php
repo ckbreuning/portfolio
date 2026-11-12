@@ -82,17 +82,25 @@
                 $data = get_field($name);
 
                 if ($data and $data["text"]) { ?>
-                    <section class="case-section <?php if (!$data["image"]) { echo "case-section-text"; } ?>" id="<?php echo $name; ?>">
+                    <?php
+                        $isWide = false;
+                        if ($data["image"]) {
+                            $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
+                            $imageSize = wp_get_attachment_image_src($imageId, "full");
+                            $isWide = $imageSize[1] > $imageSize[2];
+                        }
+                        // https://stackoverflow.com/questions/17387313/custom-wp-strip-all-tags-wordpress-function
+                        // https://www.w3schools.com/php/func_string_strlen.asp
+                        $isLong = strlen(wp_strip_all_tags($data["text"])) > 800;
+                        $useColumns = ((!$data["image"] || $isWide) && $isLong);
+                    ?>
+                    <section class="case-section <?php if ($useColumns) { echo "case-section-text"; } ?>" id="<?php echo $name; ?>">
                         <p class="tag mono"><b><?php echo str_pad($number, 2, "0", STR_PAD_LEFT); ?></b><span><?php echo $title; ?></span></p>
                         <h2 class="display header-large case-heading"><?php echo $data["heading"] ? $data["heading"] : $title; ?></h2>
 
                         <div class="case-text"><?php echo $data["text"]; ?></div>
 
-                        <?php if ($data["image"]) {
-                            $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
-
-                            $imageSize = wp_get_attachment_image_src($imageId, "full");
-                            $isWide = $imageSize[1] > $imageSize[2]; ?>
+                        <?php if ($data["image"]) { ?>
                             <figure class="case-figure <?php if ($isWide) { echo "is-wide"; } ?>">
                                 <button class="zoom" type="button" data-full="<?php echo esc_url($imageSize[0]); ?>">
                                     <?php echo wp_get_attachment_image($imageId, "large"); ?>
