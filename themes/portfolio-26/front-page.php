@@ -93,7 +93,10 @@
   <div class="work-head">
     <div>
       <p class="tag mono"><b>02</b><span>Case studies</span></p>
-      <h2 class="display header-xl work-heading" id="work-heading">Selected work<span class="acc">.</span></h2>
+      <div class="section-head">
+        <h2 class="display header-xl work-heading" id="work-heading">Selected work<span class="acc">.</span></h2>
+        <a class="section-link mono" href="<?php echo get_post_type_archive_link("project"); ?>">See all work <i class="fa-solid fa-arrow-right-long"></i></a>
+      </div>
     </div>
   </div>
 

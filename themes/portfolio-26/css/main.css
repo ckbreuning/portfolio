@@ -798,6 +798,40 @@ textarea:focus-visible {
 
 
 /* SELECTED WORK */
+.section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px 24px;
+}
+
+.section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgb(var(--ink));
+    text-decoration: none;
+    border-bottom: 1px solid rgb(var(--line));
+}
+
+.section-link:hover,
+.section-link:focus-visible {
+    color: rgb(var(--acc));
+    border-color: rgb(var(--acc));
+}
+
+.section-link i {
+    transition: transform 0.2s ease;
+}
+
+.section-link:hover i {
+    transform: translateX(4px);
+}
+
 .btn-solid {
     background-color: rgb(var(--acc));
     border-color: rgb(var(--acc));
@@ -2625,5 +2659,9 @@ textarea:focus-visible {
 
     .timeline-steps::before {
         transform: none;
+    }
+
+    .section-link i {
+        transition: none;
     }
 }
