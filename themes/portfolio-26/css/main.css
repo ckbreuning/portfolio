@@ -233,10 +233,6 @@ textarea:focus-visible {
     gap: 10px 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-
-    .console {
-        justify-self: end;
-    }
 }
 
 .logo {
@@ -278,12 +274,6 @@ textarea:focus-visible {
         color: rgb(var(--ink));
         border-bottom-color: rgb(var(--acc));
     }
-}
-
-.console {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 @media (max-width: 767px) {

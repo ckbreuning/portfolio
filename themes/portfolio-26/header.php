@@ -20,7 +20,5 @@
             <a href="<?php echo site_url('/about'); ?>" <?php if (is_page("about")) echo "class='current-menu-item'"; ?>>About</a>
             <a href="<?php echo site_url('/contact'); ?>" <?php if (is_page("contact")) echo "class='current-menu-item'"; ?>>Contact</a>
         </nav>
-
-        <div class="console"></div>
     </div>
 </header>
