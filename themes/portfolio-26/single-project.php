@@ -4,6 +4,7 @@
 <?php while (have_posts()) {
     the_post();
 
+    // Kapitlerne i en case. Key er ACF-feltgruppernes navne, value er titlerne i navigationen
     $sections = array(
         "problem" => "The problem",
         "research" => "Research",
@@ -21,7 +22,9 @@
             <ol class="chapter-list">
                 <li><a href="#intro"><span class="chapter-number">00</span><span class="chapter-name"><?php the_title(); ?></span></a></li>
                 <li><a href="#overview"><span class="chapter-number">01</span><span class="chapter-name">Overview</span></a></li>
-                <?php 
+                <?php
+
+                // Kun kapitler med tekst kommer med i navigationen, så numrene altid følger hinanden
                 $chapterNumber = 2;
                 foreach ($sections as $name => $title) {
                     $data = get_field($name);
@@ -76,32 +79,44 @@
                 <?php } ?>
             </section>
 
-            <?php 
+            <?php
+
+            // Samme løkke og nummerering som navigationen, så numrene passer sammen
             $number = 2;
             foreach ($sections as $name => $title) {
                 $data = get_field($name);
 
                 if ($data and $data["text"]) { ?>
                     <?php
+
+                        // Et billede er bredt, hvis det er bredere end højt ([1] = bredde, [2] = højde)
                         $isWide = false;
                         if ($data["image"]) {
+
+                            // ACF kan give billedet som et array eller kun som et ID, så begge dele håndteres
                             $imageId = is_array($data["image"]) ? $data["image"]["ID"] : $data["image"];
                             $imageSize = wp_get_attachment_image_src($imageId, "full");
                             $isWide = $imageSize[1] > $imageSize[2];
                         }
-                        // https://stackoverflow.com/questions/17387313/custom-wp-strip-all-tags-wordpress-function
-                        // https://www.w3schools.com/php/func_string_strlen.asp
+
+                        // Lang tekst over 800 tegn uden billede eller med et bredt billede vises i to kolonner
+                        // wp_strip_all_tags: https://stackoverflow.com/questions/17387313/custom-wp-strip-all-tags-wordpress-function
+                        // strlen: https://www.w3schools.com/php/func_string_strlen.asp
                         $isLong = strlen(wp_strip_all_tags($data["text"])) > 800;
                         $useColumns = ((!$data["image"] || $isWide) && $isLong);
                     ?>
                     <section class="case-section <?php if ($useColumns) { echo "case-section-text"; } ?>" id="<?php echo $name; ?>">
                         <p class="tag mono"><b><?php echo str_pad($number, 2, "0", STR_PAD_LEFT); ?></b><span><?php echo $title; ?></span></p>
+
+                        <?php // Bruger kapitlets egen overskrift, hvis der er skrevet en, ellers titlen fra $sections ?>; ?>
                         <h2 class="display header-large case-heading"><?php echo $data["heading"] ? $data["heading"] : $title; ?></h2>
 
                         <div class="case-text"><?php echo $data["text"]; ?></div>
 
                         <?php if ($data["image"]) { ?>
                             <figure class="case-figure <?php if ($isWide) { echo "is-wide"; } ?>">
+
+                                <!-- Billedet er en knap, der åbner lightboxen. data-full er billedet i fuld størrelse -->
                                 <button class="zoom" type="button" data-full="<?php echo esc_url($imageSize[0]); ?>">
                                     <?php echo wp_get_attachment_image($imageId, "large"); ?>
                                     <span class="zoom-icon"><i class="fa-solid fa-expand"></i></span>
@@ -113,6 +128,8 @@
                         <?php } ?>
 
                         <?php if ($data["code"]) { ?>
+
+                            <!-- esc_html viser koden som tekst i stedet for at køre den som HTML -->
                             <figure class="case-code">
                                 <figcaption class="mono"><?php echo esc_html($data["code_file"]); ?></figcaption>
                                 <pre><code><?php echo esc_html($data["code"]); ?></code></pre>
@@ -131,6 +148,7 @@
     </div>
 <?php } ?>
 
+    <!-- En lightbox til alle billeder på siden. Åbnes og lukkes af main.js -->
     <dialog class="lightbox">
         <button class="lightbox-close" type="button"><i class="fa-solid fa-xmark"></i></button>
         <img class="lightbox-image" alt="">

@@ -17,6 +17,8 @@
             </div>
 
             <?php if (has_post_thumbnail()) { ?>
+
+                <?php // Fotoet vises kun, hvis siden har et featured image ?>
                 <div class="about-hero-photo"><?php the_post_thumbnail("large"); ?></div>
             <?php } ?>
         </div>
@@ -36,6 +38,8 @@
  
             <div>
                 <p class="milestones-label mono">Timeline</p>
+
+                <!-- Hele tidslinjen bygges af main.js fra milestones.json -->
                 <ol class="milestones" data-src="<?php echo get_theme_file_uri("data/milestones.json"); ?>"></ol>
             </div>
         </section>
@@ -93,7 +97,7 @@
             <p class="tag mono"><b>04</b><span>Outside view</span></p>
             <h2 class="display header-large about-section-heading">What others say<span class="acc">.</span></h2>
 
-            <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote -->
+            <!-- Citater i figure + blockquote + figcaption: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote -->
             <div class="about-quotes">
                 <figure class="about-quote">
                     <blockquote>"Not satisfied with a 'meh' result."</blockquote>
@@ -122,6 +126,7 @@
                 <p>Counter-Strike is still a big part of my life. In May 2026, I played my first LAN, Parken Challenger Championship in Copenhagen. We didn't win a match, but it was by far the best CS experience I've ever had.</p>
             </div>
 
+            <!-- Billederne ligger i temaet, ikke i mediebiblioteket. loading="lazy" henter dem først, når man scroller ned til dem -->
             <div class="about-gallery">
                 <figure class="about-photo about-photo-large">
                     <img src="<?php echo get_theme_file_uri("images/about/pcc-lan.webp"); ?>" alt="A row of players in headsets at their computers during the LAN in Parken, with the event’s sponsor wall behind them." loading="lazy">

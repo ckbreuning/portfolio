@@ -1,4 +1,5 @@
 <?php
+// Standardskabelon. Bruges til sider, der ikke har deres egen skabelon
 get_header(); ?>
 
 <main id="main" class="wrap page-pad">

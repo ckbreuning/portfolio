@@ -3,6 +3,8 @@
 <head>
     <meta charset="<?php bloginfo("charset"); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <?php // Cases bruger deres uddrag (excerpt) som beskrivelse til søgemaskiner. Alle andre sider bruger en fast tekst ?>
     <?php if (is_singular("project") && has_excerpt()) { ?>
        <meta name="description" content="<?php echo esc_attr(get_the_excerpt()); ?>">
     <?php } else { ?>
@@ -10,10 +12,13 @@
     <?php } ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <?php // wp_head indsætter CSS og skrifttyper fra functions.php ?>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 
+<!-- Skip-link: lader tastaturbrugere hoppe direkte til indholdet. Er skjult, indtil den får fokus (ved at trykke TAB) -->
 <a href="#main" class="skip-link">Skip to content</a>
 
 <header class="top">
@@ -23,6 +28,7 @@
             <?php get_template_part("template-parts/logo"); ?>
         </a>
 
+        <!-- current-menu-item markerer den side, man er på. Work er også markeret inde i en case -->
         <nav class="nav">
             <a href="<?php echo get_post_type_archive_link('project'); ?>" <?php if (is_post_type_archive('project') or is_singular('project')) echo "class='current-menu-item'"; ?>>Work</a>
             <a href="<?php echo site_url('/about'); ?>" <?php if (is_page("about")) echo "class='current-menu-item'"; ?>>About</a>

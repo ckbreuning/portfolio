@@ -1,4 +1,4 @@
-<!-- https://copilot.cloud.microsoft/chat/share/eyJzaGFyZUlkIjoiZWNlZDZhZDktOWQ5My00MzNmLWFjZWEtZTFjY2UyMmQ2ZmM5IiwiY29udmVyc2F0aW9uSWQiOiI5MTdhZTQ1Yi1jODM4LTQ3NDItYjAyMi04NjNlZWFkM2YzMzkifQ%3D%3D -->
+<!-- QR-kode til GitHub (Copilot): https://copilot.cloud.microsoft/chat/share/eyJzaGFyZUlkIjoiZWNlZDZhZDktOWQ5My00MzNmLWFjZWEtZTFjY2UyMmQ2ZmM5IiwiY29udmVyc2F0aW9uSWQiOiI5MTdhZTQ1Yi1jODM4LTQ3NDItYjAyMi04NjNlZWFkM2YzMzkifQ%3D%3D -->
 <svg
 	class="qr-svg"
 	focusable="false"

@@ -6,6 +6,8 @@
 
 <!-- HERO -->
   <section class="poster">
+    
+    <!-- data-depth styrer, hvor meget elementet bevæger sig med musen. Negative tal bevæger sig den modsatte vej (se main.js) -->
     <span class="plus plus-1" data-depth="-1.2"></span>
     <span class="plus plus-2" data-depth="1.6"></span>
 
@@ -31,9 +33,12 @@
       <p class="note note-4" data-depth="0.9"><span class="note-label mono">Based in:</span><b>Aalborg, Denmark</b></p>
 
       <div class="poster-photo" data-depth="0.35">
+
+        <?php // Fotoet er forsidens featured image ?>
         <?php the_post_thumbnail("large"); ?>
       </div>
 
+      <!-- Radaren er en SVG, hvor hver prik ("blip") er et link til en side -->
       <div class="poster-radar">
         <svg class="radar" viewBox="0 0 200 200">
           <circle class="ring" cx="100" cy="100" r="92"/>
@@ -59,6 +64,7 @@
       </div>
     </div>
 
+    <!-- Pilene vises kun, mens hele posteren er synlig (se main.js) -->
     <a class="scroll-hint" href="#intro">
       <span class="visually-hidden">Scroll to selected work</span>
       <i class="fa-solid fa-chevron-down"></i>
@@ -69,6 +75,8 @@
 
 <!-- INTRO -->
   <section class="intro" id="intro">
+
+    <!-- Kill-feedet animeres ind af main.js, når det kommer i viewport -->
     <ul class="feed">
       <li class="feed-row"><span class="feed-who">CKB</span><i class="fa-solid fa-code"></i><span>Frontend Development</span></li>
       <li class="feed-row"><span class="feed-who">CKB</span><i class="fa-solid fa-layer-group"></i><span>UX/UI Design</span></li>
@@ -104,6 +112,8 @@
 
   <div class="project-grid">
     <?php 
+
+    // Henter de 3 cases med det højeste project_number (ACF-felt)
     $homepageProjects = new WP_Query(array(
       "posts_per_page" => 3,
       "post_type" => "project",
@@ -116,6 +126,8 @@
       $homepageProjects->the_post();
       get_template_part("template-parts/project-card");
     }
+
+    // Nulstiller, så resten af siden bruger forsidens egne data igen
     wp_reset_postdata();
     ?>
   </div>
@@ -134,6 +146,7 @@
 
   <div class="timeline">
 
+    <!-- Den stripede bue viser, at test kan sende en tilbage til design -->
     <svg class="timeline-loop" viewBox="0 0 1000 100" preserveAspectRatio="none">
       <path d="M808 100 C 720 0, 500 0, 408 100"/>
     </svg>
@@ -180,6 +193,8 @@
   <h2 class="display header-xl skills-heading" id="skills-heading">What I work with<span class="acc">.</span></h2>
 
   <div class="skill">
+
+    <!-- Fanerne og panelerne hører sammen via deres rækkefølge (index) i main.js. hidden skjuler panel 2-4 fra start -->
     <div class="skill-tabs">
       <button type="button" class="skill-tab is-active"><span class="skill-key mono">1</span>Code</button>
       <button type="button" class="skill-tab"><span class="skill-key mono">2</span>UX &amp; research</button>
@@ -281,8 +296,10 @@
 
     <div class="about-teaser-milestones">
       <p class="milestones-label mono">Milestones</p>
+
+       <!-- Listen er tom her og bygges af main.js fra milestones.json. data-show="home" = kun milepæle markeret til forsiden -->
       <ol class="milestones" data-src="<?php echo get_theme_file_uri("data/milestones.json"); ?>" data-show="home"></ol>
-      <!-- CV: <a class="btn btn-outline milestones-cv" href="YOUR-CV-LINK.pdf" download>Download full CV</a> -->
+      <!-- CV: <a class="btn btn-outline milestones-cv" href="MANGLER-CV.pdf" download>Download full CV</a> -->
     </div>
 
     <div class="about-teaser-text">

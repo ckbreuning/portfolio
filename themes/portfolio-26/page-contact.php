@@ -15,6 +15,8 @@
             <div class="contact-side">
                 <div class="contact-card contact-email-card">
                     <p class="contact-label mono">Email</p>
+
+                    <!-- data-email bruges af kopiér-knappen i main.js. Statusbeskeden skrives i .copy-status -->
                     <div class="contact-email-row">
                         <a class="contact-email" href="mailto:ckbreuning@gmail.com">ckbreuning@gmail.com</a>
                         <button class="copy-btn mono" type="button" data-email="ckbreuning@gmail.com">Copy</button>
@@ -32,7 +34,9 @@
             </div>
 
             <div class="contact-form" id="contact-form">
-                <!-- https://philowen.co/blog/adding-contact-form-7-form-php-template-wordpress -->
+
+                <!-- Formularen er bygget i Contact Form 7 (WP admin), og do_shortcode viser den her -->
+                <!-- Contact Form 7 i en PHP-skabelon: https://philowen.co/blog/adding-contact-form-7-form-php-template-wordpress -->
                  <?php echo do_shortcode("[contact-form-7 id='690d498' title='Contact']"); ?>
             </div>
         </div>
