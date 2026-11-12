@@ -1,5 +1,7 @@
 html {
     scroll-behavior: smooth;
+
+    /* Reserverer plads til scrollbaren, så siden ikke hopper sidelæns, når scroll låses (fx i lightboxen) */
     scrollbar-gutter: stable;
 }
 
@@ -8,6 +10,7 @@ html {
     color-scheme: dark;
 
     /* FARVER */
+    /* Farverne er kun RGB-tal, så de kan bruges både som rgb(var(--x)) og rgba(var(--x), .5) */
     --bg: 12, 13, 15;
     --panel: 21, 23, 26;
     --panel2: 28, 31, 35;
@@ -22,12 +25,12 @@ html {
     --p-ink: 18, 18, 18;
     --p-muted: 85, 86, 90;
     --p-line: 0, 0, 0;
-    /* REMEMBER: rgba(var(--p-line), .09) */
 
     --brand: 26, 219, 158;
     --brand-p: 10, 122, 87;
     --ct: 126, 164, 255;
     --red: 255, 75, 62;
+    /* Accentfarven peger på brandfarven, så den kan skiftes ét sted */
     --acc: var(--brand);
     --acc-p: var(--brand-p);
     --on-acc: 12, 13, 15;
@@ -39,7 +42,35 @@ html {
     --f-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
     --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 
+    /* SKRIFTSTØRRELSER */
+    /* rem, så teksten følger brugerens egen skriftstørrelse i browseren. 1rem = 16px som standard */
+    --fs-xxs: .8125rem;
+    /* 13px */
+    --fs-xs: .875rem;
+    /* 14px */
+    --fs-s: .9375rem;
+    /* 15px */
+    --fs-m: 1rem;
+    /* 16px */
+    --fs-ml: 1.0625rem;
+    /* 17px */
+    --fs-l: 1.125rem;
+    /* 18px */
+    --fs-xl: 1.25rem;
+    /* 20px */
+    --fs-xxl: 1.375rem;
+    /* 22px */
+
+    /* Flydende størrelser, der vokser med skærmbredden mellem en mindste og største størrelse */
+    --fs-text: clamp(1.125rem, 1.4vw, 1.3125rem);
+    /* 18-21px: brødtekst i lead, cases og About */
+    --fs-header-large: clamp(2.5rem, 5vw, 5rem);
+    /* 40-80px */
+    --fs-header-xl: clamp(3.25rem, 7.4vw, 7.5rem);
+    /* 52-120px */
+
     /* GUTTERS */
+    /* Sidemargen, der vokser med skærmbredden: mindst 16px, højst 48px */
     --gut: clamp(16px, 4vw, 48px);
 }
 
@@ -54,11 +85,12 @@ body {
     margin: 0;
     background-color: rgb(var(--bg));
     color: rgb(var(--ink));
-    font-size: 16px;
+    font-size: var(--fs-m);
     line-height: 1.6;
     font-family: var(--f-body);
 }
 
+/* Sættes af main.js, mens lightboxen er åben, så siden bagved ikke kan scrolle */
 body.is-locked {
     overflow: hidden;
 }
@@ -141,17 +173,9 @@ textarea:focus-visible {
 
 .mono {
     font-family: var(--f-mono);
-    font-size: 16px;
+    font-size: var(--fs-m);
     letter-spacing: .01em;
     text-transform: uppercase;
-}
-
-.muted {
-    color: rgb(var(--muted));
-}
-
-.soft {
-    color: rgb(var(--soft));
 }
 
 .acc {
@@ -159,22 +183,28 @@ textarea:focus-visible {
 }
 
 .lead {
-    font-size: clamp(18px, 1.4vw, 21px);
-    line-height: 1.6;
+    font-size: var(--fs-text);
     color: rgb(var(--soft));
     max-width: 640px;
-
-    strong {
-        font-weight: 600;
-        color: rgb(var(--ink));
-    }
 }
 
-.text-link {
+/* Fremhævet tekst i lead og cases */
+.lead strong,
+.case-text strong {
+    font-weight: 600;
+    color: rgb(var(--ink));
+}
+
+/* Understregede links i tekst */
+.text-link,
+.case-text a {
     color: rgb(var(--ink));
     text-decoration: underline;
     text-decoration-color: rgb(var(--acc));
     text-underline-offset: 4px;
+}
+
+.text-link {
     transition: color .2s;
 }
 
@@ -183,11 +213,23 @@ textarea:focus-visible {
 }
 
 .header-xl {
-    font-size: clamp(52px, 7.4vw, 120px);
+    font-size: var(--fs-header-xl);
 }
 
 .header-large {
-    font-size: clamp(40px, 5vw, 80px)
+    font-size: var(--fs-header-large);
+}
+
+/* Afstanden mellem sektions-tag og overskrift */
+.intro-heading,
+.work-heading,
+.process-heading,
+.skills-heading,
+.about-section-heading,
+.case-title,
+.about-heading,
+.contact-heading {
+    margin-top: 18px;
 }
 
 .skip-link {
@@ -198,7 +240,7 @@ textarea:focus-visible {
     padding: 10px 16px;
     background-color: rgb(var(--acc));
     color: rgb(var(--on-acc));
-    font: 700 16px var(--f-display);
+    font: 700 var(--fs-m) var(--f-display);
     text-transform: uppercase;
 }
 
@@ -215,16 +257,74 @@ textarea:focus-visible {
     margin-top: 24px;
 }
 
+/* Afstand over forsidens sektioner. Står efter .wrap, så den overskriver padding fra .wrap */
+.work,
+.process,
+.skills,
+.about-teaser,
+.contact {
+    padding-top: 128px;
+}
+
+@media (max-width: 767px) {
+
+    .work,
+    .process,
+    .skills,
+    .about-teaser,
+    .contact {
+        padding-top: 88px;
+    }
+}
+
+/* Lodrette lister med samme afstand */
+.intro-text,
+.about-teaser-text,
+.contact-side {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Rækker af knapper */
+.about-buttons,
+.about-teaser-buttons,
+.case-end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Rækker af små mærker og filterknapper */
+.filters,
+.about-roles,
+.also-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Overskrift til venstre og tekst eller link til højre, der lægger sig under på smalle skærme */
+.work-head,
+.process-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 /* HEADER */
 .top {
     position: sticky;
     top: 0;
     z-index: 40;
+    /* Let gennemsigtig baggrund med blur, så indholdet anes bag den sticky header */
     background: rgba(var(--bg), .92);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgb(var(--line));
 }
 
+/* Tre kolonner: logo, navigation og en tom kolonne, så navigationen står præcis i midten */
 .top-row {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -258,7 +358,7 @@ textarea:focus-visible {
         align-items: center;
         min-height: 40px;
         color: rgb(var(--soft));
-        font: 600 16px var(--f-display);
+        font: 600 var(--fs-m) var(--f-display);
         text-transform: uppercase;
         letter-spacing: .04em;
         border-bottom: 2px solid transparent;
@@ -293,11 +393,11 @@ textarea:focus-visible {
     border: 1px solid currentColor;
     background: transparent;
     cursor: pointer;
-    font: 700 16px var(--f-display);
+    font: 700 var(--fs-m) var(--f-display);
     letter-spacing: .04em;
     text-transform: uppercase;
     white-space: nowrap;
-    /* https://stackoverflow.com/questions/77232392/corners-cut-css */
+    /* Skårne hjørner (øverst til højre og nederst til venstre): https://stackoverflow.com/questions/77232392/corners-cut-css */
     clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
     transition: background-color .2s, color .2s, border-color .2s;
 }
@@ -313,15 +413,36 @@ textarea:focus-visible {
     border-color: rgb(var(--acc-p));
 }
 
+/* Udfyldte knapper i accentfarven */
+.btn-solid,
+.accept-btn {
+    background-color: rgb(var(--acc));
+    border-color: rgb(var(--acc));
+    color: rgb(var(--on-acc));
+}
+
+.accept-btn:hover,
+.project-card:hover .btn-solid {
+    background-color: rgb(var(--ink));
+    border-color: rgb(var(--ink));
+}
+
+.btn-outline:hover {
+    background-color: rgb(var(--ink));
+    color: rgb(var(--bg));
+}
+
 /* HERO */
 .poster {
     position: relative;
     overflow: hidden;
     display: flex;
+    /* Fylder skærmen minus headeren. 64px bruges, indtil main.js har målt headeren */
     min-height: calc(100vh - var(--header-height, 64px));
     color: rgb(var(--p-ink));
     background-color: rgb(var(--paper));
-    /* https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css */
+    /* Støj (grain.svg) oven på et ternet mønster lavet af to gradienter */
+    /* Ternet baggrund: https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css */
     background-image:
         url(../images/grain.svg), linear-gradient(rgba(var(--p-line), .09) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--p-line), .09) 1px, transparent 1px);
     background-size: 180px 180px, 56px 56px, 56px 56px;
@@ -338,6 +459,7 @@ textarea:focus-visible {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: auto auto 1fr 1fr auto;
+    /* Navngivne områder, så elementerne kan flyttes rundt på mindre skærme ved kun at ændre areas */
     grid-template-areas:
         "top top top"
         "title title title"
@@ -365,6 +487,7 @@ textarea:focus-visible {
         height: 34px;
         margin-bottom: 10px;
         color: rgb(var(--p-ink));
+        /* Logoet bruger den mørkere brandfarve på den lyse poster */
         --brand: var(--brand-p);
     }
 }
@@ -385,20 +508,20 @@ textarea:focus-visible {
 .poster-title {
     grid-area: title;
     text-align: center;
-    font-size: clamp(44px, min(12.8vw, 15.5vh), 192px);
+    /* Skalerer med både bredde og højde, så navnet ikke bliver for stort på brede, lave skærme */
+    font-size: clamp(2.75rem, min(12.8vw, 15.5vh), 12rem);
 
     span {
         display: block;
     }
 
     .poster-role {
-        display: block;
         width: fit-content;
         margin: 18px auto 0;
         padding: 8px 14px;
         background-color: rgb(var(--p-ink));
         color: rgb(var(--paper));
-        font-size: clamp(16px, 1.6vw, 22px);
+        font-size: clamp(1rem, 1.6vw, 1.375rem);
         font-weight: 500;
         letter-spacing: .2em;
         line-height: 1.2;
@@ -408,7 +531,7 @@ textarea:focus-visible {
 /* NOTES */
 .note {
     align-self: center;
-    font: 600 16px/1.35 var(--f-body);
+    font: 600 var(--fs-m)/1.35 var(--f-body);
     text-transform: uppercase;
 
     b {
@@ -478,6 +601,7 @@ textarea:focus-visible {
         stroke-dasharray: 2 5;
     }
 
+    /* Radarens viser drejer om midten af SVG'en (100, 100) */
     .sweep {
         transform-origin: 100px 100px;
         animation: sweep 4s linear infinite;
@@ -505,18 +629,22 @@ textarea:focus-visible {
     }
 
     text {
-        font: 600 18px var(--f-mono);
+        font: 600 var(--fs-l) var(--f-mono);
         fill: rgb(var(--p-ink));
     }
 }
 
-.blip:hover circle,
-.blip:focus-visible circle {
-    fill: rgb(var(--acc-p));
+.blip:hover,
+.blip:focus-visible {
+    circle {
+        fill: rgb(var(--acc-p));
+    }
 }
 
-.blip:focus-visible text {
-    text-decoration: underline;
+.blip:focus-visible {
+    text {
+        text-decoration: underline;
+    }
 }
 
 /* AVAILABILITY + SEE MY WORK */
@@ -538,10 +666,15 @@ textarea:focus-visible {
     color: rgb(var(--acc-p));
 }
 
-.status-dot {
+/* Runde prikker foran status-teksterne */
+.status-dot,
+.contact-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+}
+
+.status-dot {
     background-color: rgb(var(--acc-p));
 }
 
@@ -653,17 +786,19 @@ textarea:focus-visible {
     flex-direction: column;
     align-items: center;
     color: rgb(var(--p-ink));
+    /* Skjult og ikke klikbar, indtil main.js tilføjer is-visible */
     opacity: 0;
     pointer-events: none;
     transition: opacity .4s;
 
     i {
-        font-size: 14px;
+        font-size: var(--fs-xs);
         line-height: .7;
         opacity: .15;
         animation: scroll-hint 1.5s infinite;
     }
 
+    /* Pilene lyser op efter hinanden */
     i:nth-child(2) {
         animation-delay: .2s;
     }
@@ -707,6 +842,7 @@ textarea:focus-visible {
 }
 
 /* SPLIT */
+/* Et 12-kolonne grid. Standard er to lige store halvdele (6 + 6) */
 .split {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -715,12 +851,14 @@ textarea:focus-visible {
     align-items: start;
 }
 
-.split> :first-child {
-    grid-column: 1 / span 6;
-}
+.split {
+    > :first-child {
+        grid-column: 1 / span 6;
+    }
 
-.split> :last-child {
-    grid-column: 7 / span 6;
+    > :last-child {
+        grid-column: 7 / span 6;
+    }
 }
 
 /* INTRO SECTION */
@@ -744,7 +882,8 @@ textarea:focus-visible {
     padding: 8px 14px;
     background-color: rgba(10, 10, 12, .82);
     border: 1px solid rgb(var(--acc));
-    font: 600 17px var(--f-body);
+    font: 600 var(--fs-ml) var(--f-body);
+    /* Starter skjult og glider ind, når main.js tilføjer is-visible på .feed */
     opacity: 0;
     transform: translateY(8px);
     transition: opacity .5s, transform .5s;
@@ -754,17 +893,20 @@ textarea:focus-visible {
     color: rgb(var(--acc));
 }
 
-.feed.is-visible .feed-row {
-    opacity: 1;
-    transform: none;
-}
+.feed.is-visible {
+    .feed-row {
+        opacity: 1;
+        transform: none;
+    }
 
-.feed.is-visible .feed-row:nth-child(2) {
-    transition-delay: .35s;
-}
+    /* Rækkerne kommer ind efter hinanden */
+    .feed-row:nth-child(2) {
+        transition-delay: .35s;
+    }
 
-.feed.is-visible .feed-row:nth-child(3) {
-    transition-delay: .7s;
+    .feed-row:nth-child(3) {
+        transition-delay: .7s;
+    }
 }
 
 /* HEADING + TEXT */
@@ -772,22 +914,18 @@ textarea:focus-visible {
     margin-top: 72px;
 }
 
-.intro-heading {
-    margin-top: 18px;
-}
-
 .intro-text {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
     padding-top: 30px;
 }
 
 @media (max-width: 900px) {
 
-    .split> :first-child,
-    .split> :last-child {
-        grid-column: 1 / -1;
+    .split {
+
+        > :first-child,
+        > :last-child {
+            grid-column: 1 / -1;
+        }
     }
 
     .intro-text {
@@ -810,11 +948,13 @@ textarea:focus-visible {
     align-items: center;
     gap: 10px;
     min-height: 44px;
-    font-size: 14px;
-    text-transform: uppercase;
+    font-size: var(--fs-xs);
     color: rgb(var(--ink));
-    text-decoration: none;
     border-bottom: 1px solid rgb(var(--line));
+
+    i {
+        transition: transform 0.2s ease;
+    }
 }
 
 .section-link:hover,
@@ -823,34 +963,15 @@ textarea:focus-visible {
     border-color: rgb(var(--acc));
 }
 
-.section-link i {
-    transition: transform 0.2s ease;
-}
-
-.section-link:hover i {
-    transform: translateX(4px);
-}
-
-.btn-solid {
-    background-color: rgb(var(--acc));
-    border-color: rgb(var(--acc));
-    color: rgb(var(--on-acc));
-}
-
-.work {
-    padding-top: 128px;
+/* Pilen glider lidt til højre ved hover */
+.section-link:hover {
+    i {
+        transform: translateX(4px);
+    }
 }
 
 .work-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
     gap: 20px;
-}
-
-.work-heading {
-    margin-top: 18px;
 }
 
 .project-grid {
@@ -861,8 +982,10 @@ textarea:focus-visible {
 }
 
 /* WORK PAGE */
-.work-page .project-grid {
-    margin-top: 24px;
+.work-page {
+    .project-grid {
+        margin-top: 24px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -873,9 +996,6 @@ textarea:focus-visible {
 
 /* FILTER BUTTONS */
 .filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: 32px;
 }
 
@@ -885,7 +1005,7 @@ textarea:focus-visible {
     border: 1px solid rgb(var(--line));
     background-color: transparent;
     color: rgb(var(--soft));
-    font: 500 16px var(--f-mono);
+    font: 500 var(--fs-m) var(--f-mono);
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color .2s, color .2s, border-color .2s;
@@ -923,6 +1043,15 @@ textarea:focus-visible {
 .project-card:focus-visible {
     border-color: rgb(var(--acc));
     transform: translateY(-4px);
+
+    /* Billedet får farve, og stemplet vises */
+    .project-image img {
+        filter: grayscale(0) contrast(1);
+    }
+
+    .project-stamp {
+        opacity: 1;
+    }
 }
 
 .project-image {
@@ -937,16 +1066,13 @@ textarea:focus-visible {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        /* Sort-hvid, indtil kortet får hover eller fokus */
         filter: grayscale(1) contrast(1.1);
         transition: filter .4s;
     }
 }
 
-.project-card:hover .project-image img,
-.project-card:focus-visible .project-image img {
-    filter: grayscale(0) contrast(1)
-}
-
+/* Mørk gradient i venstre side, så den lodrette kode kan læses oven på billedet */
 .project-image::after {
     content: "";
     position: absolute;
@@ -956,13 +1082,14 @@ textarea:focus-visible {
 }
 
 /* VERTICAL CODE */
+/* Lodret tekst, der læses nedefra og op */
 .project-code {
     position: absolute;
     left: 14px;
     top: 12px;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font: 900 clamp(20px, 1.8vw, 28px) var(--f-display);
+    font: 900 clamp(1.25rem, 1.8vw, 1.75rem) var(--f-display);
     text-transform: uppercase;
     letter-spacing: .02em;
     color: rgb(var(--paper));
@@ -977,7 +1104,7 @@ textarea:focus-visible {
     top: 14px;
     padding: 4px 10px;
     border: 2px solid currentColor;
-    font: 900 16px var(--f-display);
+    font: 900 var(--fs-m) var(--f-display);
     text-transform: uppercase;
     color: rgb(var(--paper));
     transform: rotate(6deg);
@@ -987,11 +1114,6 @@ textarea:focus-visible {
     background-color: rgba(var(--black), .6);
 }
 
-.project-card:hover .project-stamp,
-.project-card:focus-visible .project-stamp {
-    opacity: 1;
-}
-
 /* TEXT */
 .project-body {
     display: flex;
@@ -999,6 +1121,12 @@ textarea:focus-visible {
     gap: 10px;
     flex: 1;
     padding: 20px;
+
+    /* Knappen skubbes ned i bunden af kortet, så knapperne flugter */
+    .btn {
+        align-self: flex-start;
+        margin-top: auto;
+    }
 }
 
 .project-meta,
@@ -1011,21 +1139,11 @@ textarea:focus-visible {
 }
 
 .project-title {
-    font-size: clamp(26px, 2.2vw, 34px);
+    font-size: clamp(1.625rem, 2.2vw, 2.125rem);
 }
 
 .project-desc {
     color: rgb(var(--soft));
-}
-
-.project-body .btn {
-    align-self: flex-start;
-    margin-top: auto;
-}
-
-.project-card:hover .btn-solid {
-    background-color: rgb(var(--ink));
-    border-color: rgb(var(--ink));
 }
 
 @media (max-width: 900px) {
@@ -1039,17 +1157,10 @@ textarea:focus-visible {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .work {
-        padding-top: 88px;
-    }
 }
 
 /* CASE STUDY */
-.btn-outline:hover {
-    background-color: rgb(var(--ink));
-    color: rgb(var(--bg));
-}
-
+/* Kapitelnavigationen sidder fast lige under headeren */
 .chapters {
     position: sticky;
     top: var(--header-height, 64px);
@@ -1092,18 +1203,20 @@ textarea:focus-visible {
         color: rgb(var(--acc));
     }
 
+    /* Alle kapitler deler bredden ligeligt og må krympe, så navnene bliver forkortet med ... */
     li {
         flex: 1 1 0;
         min-width: 0;
     }
 
+    /* Det aktive kapitel får plads til hele sit navn */
     li:has(.is-current) {
         min-width: max-content;
     }
 }
 
 .chapter-number {
-    font: 500 16px var(--f-mono);
+    font: 500 var(--fs-m) var(--f-mono);
 }
 
 .chapter-name {
@@ -1111,11 +1224,13 @@ textarea:focus-visible {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font: 700 16px var(--f-display);
+    font: 700 var(--fs-m) var(--f-display);
     text-transform: uppercase;
 }
 
 @media (max-width: 900px) {
+
+    /* På mobil får kapitlerne deres naturlige bredde, og baren scroller sidelæns */
     .chapter-list {
         li {
             flex: none;
@@ -1130,11 +1245,11 @@ textarea:focus-visible {
     }
 
     .chapter-number {
-        font-size: 13px;
+        font-size: var(--fs-xxs);
     }
 
     .chapter-name {
-        font-size: 14px;
+        font-size: var(--fs-xs);
     }
 }
 
@@ -1162,8 +1277,7 @@ textarea:focus-visible {
 }
 
 .case-title {
-    margin-top: 18px;
-    font-size: clamp(44px, 5.5vw, 96px);
+    font-size: clamp(2.75rem, 5.5vw, 6rem);
 }
 
 .case-hero {
@@ -1187,9 +1301,11 @@ textarea:focus-visible {
 
 .case-section {
     padding-top: 128px;
+    /* Når man hopper til et kapitel, lander overskriften under headeren i stedet for bag den */
     scroll-margin-top: calc(var(--header-height, 64px) + 24px);
 }
 
+/* Tekst til venstre (7 dele) og billede til højre (5 dele) */
 .case .case-section {
     display: grid;
     grid-template-columns: 7fr 5fr;
@@ -1201,15 +1317,20 @@ textarea:focus-visible {
     margin-top: 16px;
 }
 
-.case-text {
-    grid-column: 1;
+/* Brødtekst i cases og på About-siden */
+.case-text,
+.about-text {
     display: flex;
     flex-direction: column;
     gap: 18px;
     max-width: 720px;
     margin-top: 18px;
-    font-size: clamp(18px, 1.4vw, 21px);
+    font-size: var(--fs-text);
     color: rgb(var(--soft));
+}
+
+.case-text {
+    grid-column: 1;
 
     ul,
     ol {
@@ -1227,18 +1348,6 @@ textarea:focus-visible {
     li+li {
         margin-top: 6px;
     }
-
-    strong {
-        font-weight: 600;
-        color: rgb(var(--ink));
-    }
-
-    a {
-        color: rgb(var(--ink));
-        text-decoration: underline;
-        text-decoration-color: rgb(var(--acc));
-        text-underline-offset: 4px;
-    }
 }
 
 .case-section .tag,
@@ -1252,12 +1361,6 @@ textarea:focus-visible {
 @media (max-width: 900px) {
     .case .case-section {
         grid-template-columns: minmax(0, 1fr);
-    }
-
-    .case-figure {
-        grid-column: 1;
-        grid-row: auto;
-        margin-top: 32px;
     }
 }
 
@@ -1283,6 +1386,7 @@ textarea:focus-visible {
 }
 
 /* CASE STUDY IMAGES */
+/* Billedet står i højre kolonne på samme række som teksten og strækker sig til tekstens højde */
 .case-figure {
     grid-column: 2;
     grid-row: 3;
@@ -1296,6 +1400,7 @@ textarea:focus-visible {
         min-height: 240px;
     }
 
+    /* Billedet beskæres til tekstens højde og viser toppen, så høje billeder ikke gør sektionen længere */
     .zoom img {
         position: absolute;
         inset: 0;
@@ -1312,6 +1417,7 @@ textarea:focus-visible {
     }
 }
 
+/* Brede billeder vises i fuld bredde under teksten og beskæres ikke */
 .case-figure.is-wide {
     grid-column: 1 / -1;
     grid-row: auto;
@@ -1328,15 +1434,18 @@ textarea:focus-visible {
     }
 }
 
-.case-section-text .case-text {
-    grid-column: 1 / -1;
-    display: block;
-    max-width: none;
-    column-count: 2;
-    column-gap: 48px;
+/* Lang tekst uden billede (eller med et bredt billede) deles i to kolonner. Klassen sættes i single-project.php */
+.case-section-text {
+    .case-text {
+        grid-column: 1 / -1;
+        display: block;
+        max-width: none;
+        column-count: 2;
+        column-gap: 48px;
 
-    p {
-        margin-bottom: 18px;
+        p {
+            margin-bottom: 18px;
+        }
     }
 }
 
@@ -1347,18 +1456,24 @@ textarea:focus-visible {
         margin-top: 32px;
     }
 
-    .case-figure .zoom {
-        flex: none;
-        min-height: 0;
-        aspect-ratio: 4 / 3;
+    .case-figure {
+        .zoom {
+            flex: none;
+            min-height: 0;
+            aspect-ratio: 4 / 3;
+        }
     }
 
-    .case-figure.is-wide .zoom {
-        aspect-ratio: auto;
+    .case-figure.is-wide {
+        .zoom {
+            aspect-ratio: auto;
+        }
     }
 
-    .case-section-text .case-text {
-        column-count: 1;
+    .case-section-text {
+        .case-text {
+            column-count: 1;
+        }
     }
 }
 
@@ -1388,11 +1503,6 @@ textarea:focus-visible {
     transition: background-color .2s, color .2s;
 }
 
-.zoom:hover .zoom-icon,
-.zoom:focus-visible .zoom-icon {
-    background-color: rgb(var(--acc));
-    color: rgb(var(--on-acc));
-}
 
 /* LIGHTBOX */
 .lightbox {
@@ -1406,6 +1516,7 @@ textarea:focus-visible {
     background-color: rgba(var(--bg), .95);
 }
 
+/* En dialog er skjult som standard, så grid sættes kun, når den er åben */
 .lightbox[open] {
     display: grid;
     place-items: center;
@@ -1429,15 +1540,20 @@ textarea:focus-visible {
     border: 1px solid rgb(var(--line));
     background-color: rgb(var(--panel));
     color: rgb(var(--ink));
-    font-size: 20px;
+    font-size: var(--fs-xl);
     cursor: pointer;
 }
 
+/* Zoom-ikonet og luk-knappen får accentfarven ved hover */
+.zoom:hover .zoom-icon,
+.zoom:focus-visible .zoom-icon,
 .lightbox-close:hover {
     background-color: rgb(var(--acc));
     color: rgb(var(--on-acc));
 }
 
+/* Zoomet: billedet vises i fuld størrelse, og dialogen kan scrolles.
+   place-items: normal + margin: auto holder billedet centreret, men lader det scrolle til alle sider */
 .lightbox.is-zoomed {
     place-items: normal;
     overflow: auto;
@@ -1450,10 +1566,6 @@ textarea:focus-visible {
     }
 }
 
-.has-crosshair .lightbox button {
-    cursor: pointer;
-}
-
 /* CASE STUDY CODE SNIPPET */
 .case-code {
     margin: 32px 0 0;
@@ -1464,17 +1576,17 @@ textarea:focus-visible {
         border-bottom: none;
         color: rgb(var(--muted));
         text-transform: none;
-        /* keep file names like main.js lowercase */
+        /* Filnavne som main.js beholder små bogstaver */
     }
 
     pre {
         margin: 0;
         padding: 20px;
         overflow-x: auto;
-        /* long lines scroll instead of breaking the layout */
+        /* Lange linjer scroller i stedet for at ødelægge layoutet */
         background-color: rgb(var(--panel));
         border: 1px solid rgb(var(--line));
-        font: 15px/1.6 var(--f-mono);
+        font: var(--fs-s)/1.6 var(--f-mono);
         color: rgb(var(--soft));
         tab-size: 4;
     }
@@ -1482,9 +1594,6 @@ textarea:focus-visible {
 
 /* END BUTTONS */
 .case-end {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
     margin-top: 96px;
 }
 
@@ -1500,24 +1609,12 @@ textarea:focus-visible {
 }
 
 /* HOW I WORK */
-.process {
-    padding-top: 128px;
-}
-
 .process-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-end;
     gap: 20px 40px;
 
     .lead {
         max-width: 520px;
     }
-}
-
-.process-heading {
-    margin-top: 18px;
 }
 
 /* TIMELINE */
@@ -1542,6 +1639,7 @@ textarea:focus-visible {
         stroke: rgb(var(--ct));
         stroke-width: 2;
         stroke-dasharray: 6 6;
+        /* Stregen beholder sin tykkelse, selvom SVG'en strækkes i bredden */
         vector-effect: non-scaling-stroke;
     }
 }
@@ -1550,9 +1648,9 @@ textarea:focus-visible {
     position: absolute;
     top: 6px;
     left: 60.8%;
-    /* the middle of the loop */
+    /* Midten af buen */
     transform: translateX(-50%);
-    font-size: 14px;
+    font-size: var(--fs-xs);
     color: rgb(var(--ct));
     white-space: nowrap;
     opacity: 0;
@@ -1565,6 +1663,7 @@ textarea:focus-visible {
     grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+/* Linjen gennem trinene. Starter med bredden 0 (scaleX) og tegnes ud, når tidslinjen bliver synlig */
 .timeline-steps::before {
     content: "";
     position: absolute;
@@ -1598,8 +1697,11 @@ textarea:focus-visible {
     background-color: rgb(var(--bg));
 }
 
-.timeline-step:last-child .timeline-node {
-    background-color: rgb(var(--acc));
+/* Det sidste trin har en udfyldt prik */
+.timeline-step:last-child {
+    .timeline-node {
+        background-color: rgb(var(--acc));
+    }
 }
 
 .timeline-number {
@@ -1608,7 +1710,7 @@ textarea:focus-visible {
 
 .timeline-name {
     margin-top: 6px;
-    font-size: clamp(24px, 2.4vw, 36px);
+    font-size: clamp(1.5rem, 2.4vw, 2.25rem);
 }
 
 .timeline-text {
@@ -1617,6 +1719,8 @@ textarea:focus-visible {
 }
 
 .timeline.is-visible {
+
+    /* Linjen stopper ved det sidste trin */
     .timeline-steps::before {
         transform: none;
         right: 20%;
@@ -1632,6 +1736,7 @@ textarea:focus-visible {
         opacity: 1;
     }
 
+    /* Trinene kommer ind efter hinanden */
     .timeline-step:nth-child(2) {
         transition-delay: .2s;
     }
@@ -1663,6 +1768,7 @@ textarea:focus-visible {
         grid-template-columns: minmax(0, 1fr);
     }
 
+    /* På mobil er tidslinjen lodret */
     .timeline-steps::before {
         top: 0;
         bottom: 0;
@@ -1683,21 +1789,7 @@ textarea:focus-visible {
     }
 }
 
-@media (max-width: 767px) {
-    .process {
-        padding-top: 88px;
-    }
-}
-
 /* SKILLS */
-.skills {
-    padding-top: 128px;
-}
-
-.skills-heading {
-    margin-top: 18px;
-}
-
 .skill {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
@@ -1722,7 +1814,7 @@ textarea:focus-visible {
     border-bottom: 1px solid rgb(var(--line));
     background-color: transparent;
     color: rgb(var(--soft));
-    font: 700 16px var(--f-display);
+    font: 700 var(--fs-m) var(--f-display);
     text-transform: uppercase;
     text-align: left;
     cursor: pointer;
@@ -1742,6 +1834,7 @@ textarea:focus-visible {
     opacity: .7;
 }
 
+/* gap: 1px + baggrundsfarve giver tynde streger mellem felterne */
 .slots {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1760,7 +1853,7 @@ textarea:focus-visible {
 }
 
 .slot-name {
-    font: 800 22px/1 var(--f-display);
+    font: 800 var(--fs-xxl)/1 var(--f-display);
     text-transform: uppercase;
 }
 
@@ -1777,17 +1870,19 @@ textarea:focus-visible {
 }
 
 .also-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: 12px;
 
     li {
-        padding: 6px 12px;
-        border: 1px solid rgb(var(--line));
-        color: rgb(var(--soft));
-        font-size: 15px;
+        font-size: var(--fs-s);
     }
+}
+
+/* Små mærker med kant */
+.also-list li,
+.about-roles li {
+    padding: 6px 12px;
+    border: 1px solid rgb(var(--line));
+    color: rgb(var(--soft));
 }
 
 @media (max-width: 900px) {
@@ -1801,10 +1896,6 @@ textarea:focus-visible {
 }
 
 @media (max-width: 767px) {
-    .skills {
-        padding-top: 88px;
-    }
-
     .skill {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -1827,23 +1918,12 @@ textarea:focus-visible {
 
 /* ABOUT TEASER */
 .about-teaser {
-    padding-top: 128px;
-
     .split {
         align-items: stretch;
     }
 }
 
-.about-teaser-text {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
 .about-teaser-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
     margin-top: 12px;
 }
 
@@ -1853,17 +1933,12 @@ textarea:focus-visible {
     }
 }
 
-@media (max-width: 767px) {
-    .about-teaser {
-        padding-top: 88px;
-    }
-}
-
 /* MILESTONES */
 .milestones-label {
     color: rgb(var(--dim));
 }
 
+/* min-height reserverer plads, så siden ikke hopper, når main.js har bygget listen */
 .milestones {
     min-height: 412px;
     margin-top: 12px;
@@ -1903,7 +1978,7 @@ textarea:focus-visible {
     padding: 2px 7px;
     background-color: rgb(var(--acc));
     color: rgb(var(--on-acc));
-    font-size: 13px;
+    font-size: var(--fs-xxs);
     font-weight: 500;
 }
 
@@ -1934,10 +2009,6 @@ textarea:focus-visible {
 }
 
 /* CONTACT */
-.contact {
-    padding-top: 128px;
-}
-
 .accept {
     max-width: 640px;
     margin: 0 auto;
@@ -1953,7 +2024,7 @@ textarea:focus-visible {
 
 .accept-heading {
     margin-top: 12px;
-    font-size: clamp(34px, 4.4vw, 60px);
+    font-size: clamp(2.125rem, 4.4vw, 3.75rem);
 }
 
 .accept-text {
@@ -1972,6 +2043,7 @@ textarea:focus-visible {
         height: 100%;
         background-color: rgb(var(--acc));
         transform-origin: left;
+        /* Bjælken tæller ned i en løkke, som en "accept match"-timer */
         animation: countdown 20s linear infinite;
     }
 }
@@ -1989,15 +2061,7 @@ textarea:focus-visible {
 .accept-btn {
     min-height: 60px;
     padding: 0 44px;
-    background-color: rgb(var(--acc));
-    border-color: rgb(var(--acc));
-    color: rgb(var(--on-acc));
-    font-size: 20px;
-}
-
-.accept-btn:hover {
-    background-color: rgb(var(--ink));
-    border-color: rgb(var(--ink));
+    font-size: var(--fs-xl);
 }
 
 .accept-email {
@@ -2016,30 +2080,13 @@ textarea:focus-visible {
     margin-top: 22px;
 }
 
-@media (max-width: 767px) {
-    .contact {
-        padding-top: 88px;
-    }
-}
-
 /* CONTACT PAGE */
 .contact-heading {
-    margin-top: 18px;
-    font-size: clamp(56px, 9vw, 150px);
-}
-
-.contact-head .lead {
-    margin-top: 20px;
+    font-size: clamp(3.5rem, 9vw, 9.375rem);
 }
 
 .contact-grid {
     margin-top: 48px;
-}
-
-.contact-side {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
 }
 
 .contact-card {
@@ -2052,6 +2099,7 @@ textarea:focus-visible {
     position: relative;
 }
 
+/* Hjørnebeslag øverst til venstre og nederst til højre på e-mail-kortet */
 .contact-email-card::before,
 .contact-email-card::after {
     content: "";
@@ -2078,7 +2126,7 @@ textarea:focus-visible {
 }
 
 .contact-label {
-    font-size: 14px;
+    font-size: var(--fs-xs);
     color: rgb(var(--muted));
 }
 
@@ -2091,7 +2139,7 @@ textarea:focus-visible {
 }
 
 .contact-email {
-    font: 800 clamp(20px, 2vw, 28px) var(--f-display);
+    font: 800 clamp(1.25rem, 2vw, 1.75rem) var(--f-display);
     transition: color .2s;
 }
 
@@ -2104,7 +2152,7 @@ textarea:focus-visible {
     padding: 0 12px;
     border: 1px solid rgb(var(--line));
     background-color: transparent;
-    font-size: 14px;
+    font-size: var(--fs-xs);
     cursor: pointer;
     transition: border-color .2s, color .2s;
 }
@@ -2114,10 +2162,11 @@ textarea:focus-visible {
     color: rgb(var(--acc));
 }
 
+/* min-height, så kortet ikke ændrer højde, når statusbeskeden vises og forsvinder */
 .copy-status {
     min-height: 22px;
     margin-top: 8px;
-    font-size: 14px;
+    font-size: var(--fs-xs);
     color: rgb(var(--acc));
 }
 
@@ -2145,7 +2194,7 @@ textarea:focus-visible {
 }
 
 .contact-link-name {
-    font: 700 18px var(--f-display);
+    font: 700 var(--fs-l) var(--f-display);
     text-transform: uppercase;
 }
 
@@ -2154,16 +2203,18 @@ textarea:focus-visible {
 }
 
 @media (max-width: 400px) {
-    .contact-links a {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 2px;
-        padding: 12px 20px;
+    .contact-links {
+        a {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 2px;
+            padding: 12px 20px;
+        }
     }
 
     .contact-link-handle {
-        font-size: 14px;
+        font-size: var(--fs-xs);
     }
 }
 
@@ -2171,25 +2222,38 @@ textarea:focus-visible {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: var(--fs-xs);
     color: rgb(var(--acc));
 }
 
 .contact-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
     background-color: rgb(var(--acc));
 }
 
 /* CONTACT FORM */
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.contact-form {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
 
-    .btn {
+    form .btn {
         align-self: flex-start;
+    }
+
+    /* Meddelelsen efter afsendelse. De ekstra klasser overskriver pluginets eget CSS */
+    .wpcf7 form .wpcf7-response-output {
+        margin: 0;
+        padding: 14px 16px;
+        border: 1px solid rgb(var(--red));
+        background-color: rgba(var(--red), .08);
+        color: rgb(var(--ink));
+    }
+
+    .wpcf7 form.sent .wpcf7-response-output {
+        border-color: rgb(var(--acc));
+        background-color: rgba(var(--acc), .08);
     }
 }
 
@@ -2199,7 +2263,7 @@ textarea:focus-visible {
     gap: 8px;
 
     label {
-        font-size: 14px;
+        font-size: var(--fs-xs);
         color: rgb(var(--muted));
     }
 
@@ -2254,31 +2318,18 @@ textarea:focus-visible {
 .wpcf7-not-valid-tip {
     display: block;
     margin-top: 6px;
-    font-size: 14px;
+    font-size: var(--fs-xs);
     color: rgb(var(--red));
-}
-
-/* Meddelelsen efter afsendelse. De ekstra klasser overskriver pluginets eget CSS */
-.contact-form .wpcf7 form .wpcf7-response-output {
-    margin: 0;
-    padding: 14px 16px;
-    border: 1px solid rgb(var(--red));
-    background-color: rgba(var(--red), .08);
-    color: rgb(var(--ink));
-}
-
-.contact-form .wpcf7 form.sent .wpcf7-response-output {
-    border-color: rgb(var(--acc));
-    background-color: rgba(var(--acc), .08);
 }
 
 /* ABOUT PAGE */
 .about-heading {
-    margin-top: 18px;
-    font-size: clamp(48px, 5.8vw, 100px);
+    font-size: clamp(3rem, 5.8vw, 6.25rem);
 }
 
-.about-head .lead {
+/* Lead-teksten under overskriften på About og Contact */
+.about-head .lead,
+.contact-head .lead {
     margin-top: 20px;
 }
 
@@ -2305,16 +2356,10 @@ textarea:focus-visible {
 }
 
 .about-roles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: 20px;
 
     li {
-        padding: 6px 12px;
-        border: 1px solid rgb(var(--line));
-        font-size: 14px;
-        color: rgb(var(--soft));
+        font-size: var(--fs-xs);
     }
 
     li:first-child {
@@ -2323,19 +2368,24 @@ textarea:focus-visible {
     }
 }
 
-.about-head.split> :first-child {
-    grid-column: 1 / span 7;
-}
+/* Teksten fylder 7 kolonner og fotoet 5 */
+.about-head.split {
+    > :first-child {
+        grid-column: 1 / span 7;
+    }
 
-.about-head.split> :last-child {
-    grid-column: 8 / span 5;
+    > :last-child {
+        grid-column: 8 / span 5;
+    }
 }
 
 @media (max-width: 900px) {
+    .about-head.split {
 
-    .about-head.split> :first-child,
-    .about-head.split> :last-child {
-        grid-column: 1 / -1;
+        > :first-child,
+        > :last-child {
+            grid-column: 1 / -1;
+        }
     }
 }
 
@@ -2343,22 +2393,10 @@ textarea:focus-visible {
     padding-top: 96px;
 }
 
-.about-section-heading {
-    margin-top: 18px;
-}
-
-.about-text {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-width: 720px;
-    margin-top: 18px;
-    font-size: clamp(18px, 1.4vw, 21px);
-    color: rgb(var(--soft));
-}
-
-.about-section .milestones-label {
-    margin-top: 6px;
+.about-section {
+    .milestones-label {
+        margin-top: 6px;
+    }
 }
 
 .about-slots {
@@ -2381,7 +2419,7 @@ textarea:focus-visible {
     color: rgb(var(--soft));
 
     .mono {
-        font-size: 14px;
+        font-size: var(--fs-xs);
         color: rgb(var(--acc));
     }
 }
@@ -2401,21 +2439,18 @@ textarea:focus-visible {
 
     blockquote {
         margin: 0;
-        font-size: clamp(18px, 1.4vw, 21px);
+        font-size: var(--fs-text);
         color: rgb(var(--ink));
     }
 
     figcaption {
         margin-top: 12px;
-        font-size: 14px;
+        font-size: var(--fs-xs);
         color: rgb(var(--muted));
     }
 }
 
 .about-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
     margin-top: 72px;
 }
 
@@ -2446,16 +2481,18 @@ textarea:focus-visible {
         bottom: 0;
         padding: 6px 10px;
         background-color: rgba(var(--bg), .85);
-        font-size: 13px;
+        font-size: var(--fs-xxs);
         color: rgb(var(--soft));
     }
 }
 
+/* Det store billede fylder 2 kolonner og 2 rækker */
 .about-photo-large {
     grid-column: span 2;
     grid-row: span 2;
 }
 
+/* Grafikken vises helt (contain) i stedet for at blive beskåret */
 .about-photo-fit {
     background-color: rgba(var(--black), 0);
 
@@ -2485,6 +2522,8 @@ textarea:focus-visible {
     }
 }
 
+/* Skjuler tekst visuelt, men skærmlæsere og Lighthouse kan stadig læse den */
+/* Visually hidden: https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -2503,7 +2542,7 @@ textarea:focus-visible {
 }
 
 .footer-slogan {
-    font-size: clamp(28px, 3.2vw, 44px);
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
     color: rgb(var(--ink));
 }
 
@@ -2516,13 +2555,23 @@ textarea:focus-visible {
 }
 
 /* CROSSHAIR & CORNERS */
-.has-crosshair a,
-.has-crosshair button,
-.has-crosshair input[type="submit"],
-.has-crosshair .poster {
-    cursor: none;
+/* Den normale musemarkør skjules der, hvor sigtekornet vises (kun på enheder med mus) */
+.has-crosshair {
+
+    a,
+    button,
+    input[type="submit"],
+    .poster {
+        cursor: none;
+    }
+
+    /* Sigtekornet ligger under dialogen, så knapperne i lightboxen får en normal markør */
+    .lightbox button {
+        cursor: pointer;
+    }
 }
 
+/* pointer-events: none, så sigtekornet ikke blokerer klik på det, der ligger under */
 .crosshair {
     position: fixed;
     left: 0;
@@ -2575,6 +2624,7 @@ textarea:focus-visible {
     height: 2px;
 }
 
+/* Hjørnerne glider mellem elementerne, fordi position og størrelse har transition */
 .lock {
     position: fixed;
     left: 0;
@@ -2591,34 +2641,34 @@ textarea:focus-visible {
         height: 10px;
         border: 0 solid currentColor;
     }
-}
 
-.lock .corner-tl {
-    left: 0;
-    top: 0;
-    border-left-width: 2px;
-    border-top-width: 2px;
-}
+    .corner-tl {
+        left: 0;
+        top: 0;
+        border-left-width: 2px;
+        border-top-width: 2px;
+    }
 
-.lock .corner-tr {
-    right: 0;
-    top: 0;
-    border-right-width: 2px;
-    border-top-width: 2px;
-}
+    .corner-tr {
+        right: 0;
+        top: 0;
+        border-right-width: 2px;
+        border-top-width: 2px;
+    }
 
-.lock .corner-bl {
-    left: 0;
-    bottom: 0;
-    border-left-width: 2px;
-    border-bottom-width: 2px;
-}
+    .corner-bl {
+        left: 0;
+        bottom: 0;
+        border-left-width: 2px;
+        border-bottom-width: 2px;
+    }
 
-.lock .corner-br {
-    right: 0;
-    bottom: 0;
-    border-right-width: 2px;
-    border-bottom-width: 2px;
+    .corner-br {
+        right: 0;
+        bottom: 0;
+        border-right-width: 2px;
+        border-bottom-width: 2px;
+    }
 }
 
 .crosshair.is-visible,
@@ -2627,22 +2677,28 @@ textarea:focus-visible {
 }
 
 
+/* difference vender farven under sigtekornet, så det er synligt på den lyse poster */
 .crosshair.on-paper,
 .lock.on-paper {
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
 }
 
-.crosshair.on-paper span {
-    box-shadow: none;
+.crosshair.on-paper {
+    span {
+        box-shadow: none;
+    }
 }
 
 /* POSTER MOTION */
-.poster [data-depth] {
-    transition: transform .5s ease-out;
+.poster {
+    [data-depth] {
+        transition: transform .5s ease-out;
+    }
 }
 
 /* REDUCED MOTION */
+/* Slår animationer fra for brugere, der har valgt mindre bevægelse, og viser de elementer, der ellers animeres ind */
 @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -2669,7 +2725,4 @@ textarea:focus-visible {
         transform: none;
     }
 
-    .section-link i {
-        transition: none;
-    }
 }
