@@ -108,7 +108,7 @@
                     <section class="case-section <?php if ($useColumns) { echo "case-section-text"; } ?>" id="<?php echo $name; ?>">
                         <p class="tag mono"><b><?php echo str_pad($number, 2, "0", STR_PAD_LEFT); ?></b><span><?php echo $title; ?></span></p>
 
-                        <?php // Bruger kapitlets egen overskrift, hvis der er skrevet en, ellers titlen fra $sections ?>; ?>
+                        <?php // Bruger kapitlets egen overskrift, hvis der er skrevet en, ellers titlen fra $sections ?>
                         <h2 class="display header-large case-heading"><?php echo $data["heading"] ? $data["heading"] : $title; ?></h2>
 
                         <div class="case-text"><?php echo $data["text"]; ?></div>
@@ -150,7 +150,7 @@
 
     <!-- En lightbox til alle billeder på siden. Åbnes og lukkes af main.js -->
     <dialog class="lightbox">
-        <button class="lightbox-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+          <button class="lightbox-close" type="button"><span class="visually-hidden">Close</span><i class="fa-solid fa-xmark"></i></button>
         <img class="lightbox-image" alt="">
     </dialog>
 </main>
