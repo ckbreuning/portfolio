@@ -16,6 +16,7 @@
           <span>Portfolio - Aalborg, Denmark</span>
         </div>
         <a href="https://github.com/ckbreuning" class="qr-link" target="_blank">
+          <span class="visually-hidden">My GitHub profile</span>
           <?php get_template_part("template-parts/qr-github"); ?>
         </a>
       </div>
@@ -59,6 +60,7 @@
     </div>
 
     <a class="scroll-hint" href="#intro">
+      <span class="visually-hidden">Scroll to selected work</span>
       <i class="fa-solid fa-chevron-down"></i>
       <i class="fa-solid fa-chevron-down"></i>
       <i class="fa-solid fa-chevron-down"></i>

@@ -16,7 +16,7 @@ html {
     --ink: 236, 235, 231;
     --soft: 198, 200, 203;
     --muted: 154, 158, 164;
-    --dim: 108, 112, 119;
+    --dim: 132, 136, 143;
 
     --paper: 238, 237, 233;
     --p-ink: 18, 18, 18;
@@ -1865,6 +1865,7 @@ textarea:focus-visible {
 }
 
 .milestones {
+    min-height: 412px;
     margin-top: 12px;
     border-top: 1px solid rgb(var(--line));
 
@@ -2482,6 +2483,14 @@ textarea:focus-visible {
     .about-photo-large {
         grid-row: span 1;
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
 }
 
 /* FOOTER */
